@@ -1,38 +1,103 @@
-.App {
-  text-align: center;
-}
+/* 基幹部分 */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+* {
+  font-size: 62.5%;
+  box-sizing: border-box;
+  font-weight: lighter;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+body {
+  background: rgb(0, 0, 0);
+  text-align: center;
+  font-size: 10rem;
 }
+
+/* header */
+
+.header {
+  background: rgb(6, 40, 65);
+  padding: 5rem 0 5rem 0;
+  font-size: 150%;
+  font-weight: lighter;
+}
+
+/* main */
+
+.main {
+  padding: 3rem 0 5rem;
+  /* 一時的な背景色 */
+  background: rgb(6, 40, 65);
+  /* border-top: 1rem solid red; */
+  font-size: 5rem;
+}
+
+/* select */
+
+.select-beta {
+  margin-bottom: 1rem;
+}
+
+.select-beta > span {
+  margin: 0 1rem 0;
+  cursor: grab;
+  text-decoration: underline;
+}
+
+/* select end */
+
+/* rate */
+
+.rate {
+  font-size: 3rem;
+  border: solid 1px white;
+  background: rgb(41, 59, 72);
+}
+
+/* rate end */
+
+/* change-price */
+
+.change-price-beta {
+  font-size: 3rem;
+}
+
+.change-price-beta > input {
+  color: black;
+}
+
+/* change-price end */
+
+/* changed-price-beta */
+/* ややこしいからクラス名を変えること */
+
+.changed-price-beta {
+  font-size: 3rem;
+}
+
+/* changed-price-beta end */
+
+/* main end */
+
+
+/* footer */
+
+.footer {
+  /* background: black; */
+  color: white;
+}
+
+.red {
+  color: red;
+}
+
+.copy {
+  font-size: 1rem;
+}
+
+/* footer End */
