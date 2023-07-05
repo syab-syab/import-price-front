@@ -6,7 +6,10 @@ function App() {
 
   const [price, setPrice] = useState(0);
 
-  const rate = 0.0072;
+  // 現時点ではusd と jpy のレートのみ
+  // あくまで仮置き
+  const usdRate = 0.0069313302;
+  const jpyRate = 144.272;
 
   const handleChange = (e) => {
     setPrice(() => e.target.value)
@@ -31,8 +34,8 @@ function App() {
           <span>CNY</span>
         </div>
         <div className="rate">
-          {/* <p>JPY / USD : 0.0072 $</p> */}
-          <p>JPY / USD : {rate} $</p>
+          <p>USD / JPY : {jpyRate} 円</p>
+          <p>JPY / USD : {usdRate} $</p>
           <span className="red">この値はあくまで仮置きです。</span>
         </div>
         <div className="change-price-beta">
@@ -41,14 +44,14 @@ function App() {
           <br />
           ↓↓↓
           <br />
-          <p>この商品は米ドルで<span className='changed-price-beta'>{price * rate}ドル</span>です！</p>
+          <p>この商品は米ドルで<span className='changed-price-beta'>{price * usdRate}ドル</span>です！</p>
           {/* <p>昨日よりも<strong>〇〇ドル</strong>得しています！(得している場合は青か緑っぽい色)</p> */}
           {/* <p>先週よりも<strong>〇〇ドル</strong>損しています！(損の場合は赤)</p> */}
           {/* <p>半年前と同じです！(同じ場合はどうしよう)</p> */}
         </div>
       </main>
       <footer className="footer">
-        <span className="red">*このサイトの為替レートはBidの終値を用いて計算しています。</span>
+        <span className="red">*このサイトの為替レートはforex-pythonを用いて計算しています。</span>
         <br />
         <span className="copyright">©輸入品チェック(仮)</span>
       </footer>
