@@ -1,60 +1,36 @@
-// import logo from './logo.svg';
 import './App.css';
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
+import './App.css';
+import Header from './components/Header';
+import Main from './components/Main';
+import Footer from './components/Footer';
 
 function App() {
 
-  const [price, setPrice] = useState(0);
+  // const [price, setPrice] = useState(0);
 
   // 現時点ではusd と jpy のレートのみ
   // あくまで仮置き
-  const usdRate = 0.0069313302;
-  const jpyRate = 144.272;
+  // const usdRate = 0.0069313302;
+  // const jpyRate = 144.272;
 
-  const handleChange = (e) => {
-    setPrice(() => e.target.value)
-  }
+  // const handleChange = (e) => {
+  //   setPrice(() => e.target.value)
+  // }
 
   return (
-    <div className="App">
-      {/* 仮組み start */}
-      <header className="header">
-        Import Price Checker(β)
-      </header>
-      {/* 仮組み end */}
-      <main className="main">
-        <div className="select-beta">
-          {/* 本番ではaタグに直すかselectタグにする */}
-          <span>USD</span>
-          <span>EUR</span>
-          <span>GBP</span>
-          <span>CHF</span>
-          <span>AUD</span>
-          <span>KRW</span>
-          <span>CNY</span>
-        </div>
-        <div className="rate">
-          <p>USD / JPY : {jpyRate} 円</p>
-          <p>JPY / USD : {usdRate} $</p>
-          <span className="red">この値はあくまで仮置きです。</span>
-        </div>
-        <div className="change-price-beta">
-          <label>日本円での値段を入力してください。: </label>
-          <input type="number" onChange={handleChange}></input>
-          <br />
-          ↓↓↓
-          <br />
-          <p>この商品は米ドルで<span className='changed-price-beta'>{price * usdRate}ドル</span>です！</p>
-          {/* <p>昨日よりも<strong>〇〇ドル</strong>得しています！(得している場合は青か緑っぽい色)</p> */}
-          {/* <p>先週よりも<strong>〇〇ドル</strong>損しています！(損の場合は赤)</p> */}
-          {/* <p>半年前と同じです！(同じ場合はどうしよう)</p> */}
-        </div>
-      </main>
-      <footer className="footer">
-        <span className="red">*このサイトの為替レートはforex-pythonを用いて計算しています。</span>
-        <br />
-        <span className="copyright">©輸入品チェック(仮)</span>
-      </footer>
+    <div className="
+      App
+      text-center
+      
+      border
+      border-black
+      border-dashed
+      bg-orange-100
+    ">
+      <Header />
+      <Main />
+      <Footer />
     </div>
   );
 }
