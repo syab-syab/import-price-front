@@ -6,18 +6,20 @@ import ConversionRate from './ConversionRate'
 export const Main = () => {
   return (
     <>
-    <main  className="
-      bg-emerald-200
-      container
-      mx-auto
-      text-2xl
-      py-20
-
-    ">
+      <main  className="
+        bg-emerald-200
+        container
+        mx-auto
+        text-2xl
+        py-20
+        bg-opacity-30
+        
+        shadow-inner
+      ">
         <ChoiceCode />
         <CurrentRate />
         <ConversionRate />
-    </main>
+      </main>
     </>
   )
 }
