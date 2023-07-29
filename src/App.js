@@ -13,6 +13,8 @@ function App() {
       App
       text-center
       text-gray-600
+      
+      md:text-xl
     ">
       <Header />
       <Main />

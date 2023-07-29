@@ -8,13 +8,14 @@ export const Main = () => {
     <>
       <main  className="
         bg-emerald-200
-        container
-        mx-auto
-        text-2xl
-        py-20
-        bg-opacity-30
         
+        mx-auto
+        
+        bg-opacity-30
+
         shadow-inner
+        py-3
+        sm:py-20
       ">
         <ChoiceCode />
         <CurrentRate />

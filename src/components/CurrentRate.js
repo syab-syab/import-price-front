@@ -7,12 +7,12 @@ export const CurrentRate = () => {
 			rate
 			mb-4
 			py-3
-			
 			shadow-inner
+			text-xl
+			sm:text-3xl
 		">
 			{/* <p>USD / JPY : 144.272 円</p> */}
 			<p className="
-				text-3xl
 				font-bold
 				mb-2
 			">

@@ -6,10 +6,12 @@ export const ChoiceCode = () => {
     <div className="
       select-section
       mb-3
-      text-3xl
+      
       font-bold
 
       shadow-inner
+      text-xl
+      sm:text-3xl
     ">
       <label for="code-select" className="
         my-2

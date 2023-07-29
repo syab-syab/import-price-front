@@ -6,6 +6,7 @@ export const Footer = () => {
       <footer className="
         bg-black
         text-white
+        text-sm
       ">
         {/* フッター・注意書き */}
         <span className="

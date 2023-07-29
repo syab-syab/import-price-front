@@ -20,12 +20,13 @@ export const ConversionRate = () => {
 			change-price-beta
 
 			shadow-inner
+			text-xl
+			sm:text-3xl
 		">
 			<div className="
 				mb-2
 			">
 				<label for="price-value" className="
-					text-3xl
 					font-bold
 				">
 				日本円での値段を入力してください。: </label>
@@ -36,7 +37,6 @@ export const ConversionRate = () => {
 			</div>
 
 			<p className="
-				text-3xl
 				font-bold
 				mb-2
 			">
@@ -48,8 +48,9 @@ export const ConversionRate = () => {
 				flex
 				justify-center
 				pb-2
-				text-3xl
 				font-bold
+				px-3
+				sm:px-0
 			">
 				<ul className="
 					bg-gray-200
@@ -59,24 +60,30 @@ export const ConversionRate = () => {
 						text-left
 					">
 					この商品は米ドルで
+					{/* コンポーネント化する */}
 					<span className="
 						changed-price-beta
-						text-4xl
+						text-xl
+						sm:text-4xl
 					">
 						{price * usdRate}ドル
 					</span>
+					{/* コンポーネント化する・end */}
 					です！
 					</li>
 					<li className="
 						text-left
 					">
 					昨日と比べて
+					{/* コンポーネント化する */}
 					<span className="
 						changed-price-beta
-						text-4xl
+						text-xl
+						sm:text-4xl
 					">
 						0ドル
 					</span>
+					{/* コンポーネント化する・end */}
 					<span className="
 						text-blue-600
 					">
@@ -88,12 +95,15 @@ export const ConversionRate = () => {
 						text-left
 					">
 					先週と比べて
+					{/* コンポーネント化する */}
 					<span className="
 						changed-price-beta
-						text-4xl
+						text-xl
+						sm:text-4xl
 					">
 						0ドル
 					</span>
+					{/* コンポーネント化する・end */}
 					<span className="
 						text-red-600
 					">
