@@ -26,7 +26,7 @@ export const ConversionRate = () => {
 			<div className="
 				mb-2
 			">
-				<label for="price-value" className="
+				<label htmlFor="price-value" className="
 					font-bold
 				">
 				日本円での値段を入力してください。: </label>

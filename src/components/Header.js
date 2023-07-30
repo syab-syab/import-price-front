@@ -2,7 +2,7 @@ import React from 'react'
 
 export const Header = () => {
   return (
-    <header class="
+    <header className="
       bg-blue-400
       pt-24
       pb-2
@@ -10,10 +10,10 @@ export const Header = () => {
       overflow-hidden
     ">
     {/* ヘッダー・タイトル */}
-    <div class="
+    <div className="
       mb-24
     ">
-      <h1 class="
+      <h1 className="
         tracking-widest
         mb-2
         font-serif
@@ -22,7 +22,7 @@ export const Header = () => {
       ">
         YEN$CONVERSION
       </h1>
-      <h3 class="
+      <h3 className="
         mb-2
         text-xl
         sm:text-3xl
@@ -31,14 +31,14 @@ export const Header = () => {
       </h3>
     </div>
     {/* ヘッダー・メニュー */}
-    <div class="
+    <div className="
       font-bold
       space-x-12
       text-xl
       sm:text-3xl
     ">
       {/* 以下三つのspanタグはaタグに変える */}
-      <span class="
+      <span className="
         border-b-2
         border-transparent
         hover:border-white       
@@ -47,7 +47,7 @@ export const Header = () => {
       ">
         ABOUT
       </span>
-      <span class="
+      <span className="
         border-b-2
         border-transparent
         hover:border-white       
@@ -56,7 +56,7 @@ export const Header = () => {
       ">
         TWITTER
       </span>
-      <span class="
+      <span className="
         border-b-2
         border-transparent
         hover:border-white       

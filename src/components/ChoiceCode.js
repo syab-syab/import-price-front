@@ -13,7 +13,7 @@ export const ChoiceCode = () => {
       text-xl
       sm:text-3xl
     ">
-      <label for="code-select" className="
+      <label htmlFor="code-select" className="
         my-2
       ">
         通貨コードを選んでください
