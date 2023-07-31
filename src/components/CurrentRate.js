@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const CurrentRate = () => {
+export const CurrentRate = ({payCode, currentRate}) => {
   return (
 		// メイン・現在のレート
 		<div className="
@@ -17,7 +17,8 @@ export const CurrentRate = () => {
 				mb-2
 			">
 			{/* USDの部分は選択された通貨コードに変えること */}
-				JPY / USD : 0.00712105602060528 $
+				{/* JPY / USD : 0.00712105602060528 $ */}
+				JPY / {payCode} : {currentRate} $
 			</p>
 			<span className="
 				text-xl
