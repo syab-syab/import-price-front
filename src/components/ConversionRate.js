@@ -1,13 +1,13 @@
 import React from 'react'
 import { useState } from 'react'
 
-export const ConversionRate = () => {
+export const ConversionRate = ({value}) => {
 
   const [price, setPrice] = useState(0);
 
   // 現時点ではusd と jpy のレートのみ
   // あくまで仮置き
-  const usdRate = 0.00712105602060528;
+  const nowRate = value;
   // const jpyRate = 144.272;
 
   const handleChange = (e) => {
@@ -66,7 +66,7 @@ export const ConversionRate = () => {
 						text-xl
 						sm:text-4xl
 					">
-						{price * usdRate}ドル
+						{price * nowRate}ドル
 					</span>
 					{/* コンポーネント化する・end */}
 					です！
