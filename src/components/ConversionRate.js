@@ -1,14 +1,27 @@
 import React from 'react'
 import { useState } from 'react'
 
-export const ConversionRate = ({value}) => {
+export const ConversionRate = ({tRate, yRate, lWRate, lMRate}) => {
 
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState(0)
+
+	// const [yerterdayPrice, setYesterdayPrice] = useState(0)
+
+	// const [lastWeekPrice, setLastWeekPrice] = useState(0)
+
+	// const [lastMonthPrice, setLastMonthPrice] = useState(0)
+
 
   // 現時点ではusd と jpy のレートのみ
   // あくまで仮置き
-  const nowRate = value;
-  // const jpyRate = 144.272;
+  const todayRate = tRate
+  
+	const yesterdayRate = yRate
+
+
+	const lastWeekRate = lWRate
+
+	const lastMonthRate = lMRate
 
   const handleChange = (e) => {
     setPrice(() => e.target.value)
@@ -66,7 +79,7 @@ export const ConversionRate = ({value}) => {
 						text-xl
 						sm:text-4xl
 					">
-						{price * nowRate}ドル
+						{price * todayRate}ドル
 					</span>
 					{/* コンポーネント化する・end */}
 					です！
@@ -81,7 +94,7 @@ export const ConversionRate = ({value}) => {
 						text-xl
 						sm:text-4xl
 					">
-						0ドル
+						{price * yesterdayRate}
 					</span>
 					{/* コンポーネント化する・end */}
 					<span className="
@@ -101,7 +114,7 @@ export const ConversionRate = ({value}) => {
 						text-xl
 						sm:text-4xl
 					">
-						0ドル
+						{price * lastWeekRate}
 					</span>
 					{/* コンポーネント化する・end */}
 					<span className="
@@ -119,7 +132,7 @@ export const ConversionRate = ({value}) => {
 						changed-price-beta
 						text-blue-600
 					">
-							トントン
+							{price * lastMonthRate}
 					</span>
 					です！
 					</li>

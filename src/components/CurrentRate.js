@@ -1,6 +1,8 @@
 import React from 'react'
+import changeCurrencyUnit from '../functions/changeCurrencyUnit'
 
-export const CurrentRate = ({payCode, currentRate}) => {
+export const CurrentRate = ({payCode, currentRate, codeKey}) => {
+
   return (
 		// メイン・現在のレート
 		<div className="
@@ -18,7 +20,7 @@ export const CurrentRate = ({payCode, currentRate}) => {
 			">
 			{/* USDの部分は選択された通貨コードに変えること */}
 				{/* JPY / USD : 0.00712105602060528 $ */}
-				JPY / {payCode} : {currentRate} $
+				JPY / {payCode} : {currentRate} {changeCurrencyUnit(localStorage.getItem(codeKey))}
 			</p>
 			<span className="
 				text-xl

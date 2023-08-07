@@ -1,413 +1,549 @@
 {
   "test-rates": [
-      {
-      "id": 39,
-      "base_code": "JPY",
-      "payment_code": "AUD",
-      "rate_val": 0.0105704711289023,
-      "rate_period": "last_month",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 40,
-      "base_code": "JPY",
-      "payment_code": "KRW",
-      "rate_val": 9.20289830541164,
-      "rate_period": "last_month",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 41,
-      "base_code": "JPY",
-      "payment_code": "CNY",
-      "rate_val": 0.0507301969429621,
-      "rate_period": "last_month",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 42,
-      "base_code": "JPY",
-      "payment_code": "IDR",
-      "rate_val": 106.019697386529,
-      "rate_period": "last_month",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 43,
-      "base_code": "JPY",
-      "payment_code": "CAD",
-      "rate_val": 0.00945223777716559,
-      "rate_period": "last_month",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 44,
-      "base_code": "JPY",
-      "payment_code": "MYR",
-      "rate_val": 0.0328763070822899,
-      "rate_period": "last_month",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 45,
-      "base_code": "JPY",
-      "payment_code": "SGD",
-      "rate_val": 0.00956021827864425,
-      "rate_period": "last_month",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 46,
-      "base_code": "JPY",
-      "payment_code": "HKD",
-      "rate_val": 0.0556542511710618,
-      "rate_period": "last_month",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 47,
-      "base_code": "JPY",
-      "payment_code": "NZD",
-      "rate_val": 0.0115826383845003,
-      "rate_period": "last_month",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 48,
-      "base_code": "JPY",
-      "payment_code": "THB",
-      "rate_val": 0.247315919932231,
-      "rate_period": "last_month",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 49,
-      "base_code": "JPY",
-      "payment_code": "NOK",
-      "rate_val": 0.0768640035736142,
-      "rate_period": "last_month",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 50,
-      "base_code": "JPY",
-      "payment_code": "INR",
-      "rate_val": 0.584117692488591,
-      "rate_period": "last_month",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 51,
-      "base_code": "JPY",
-      "payment_code": "PHP",
-      "rate_val": 0.397165205504582,
-      "rate_period": "last_month",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 1,
-      "base_code": "JPY",
-      "payment_code": "USD",
-      "rate_val": 0.00713369669765951,
-      "rate_period": "today",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 2,
-      "base_code": "JPY",
-      "payment_code": "EUR",
-      "rate_val": 0.00641231163834562,
-      "rate_period": "today",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 3,
-      "base_code": "JPY",
-      "payment_code": "GBP",
-      "rate_val": 0.00550721385059314,
-      "rate_period": "today",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 4,
-      "base_code": "JPY",
-      "payment_code": "CHF",
-      "rate_val": 0.00611862776530939,
-      "rate_period": "today",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 5,
-      "base_code": "JPY",
-      "payment_code": "AUD",
-      "rate_val": 0.0105052901571016,
-      "rate_period": "today",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 6,
-      "base_code": "JPY",
-      "payment_code": "KRW",
-      "rate_val": 9.12459121513306,
-      "rate_period": "today",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 7,
-      "base_code": "JPY",
-      "payment_code": "CNY",
-      "rate_val": 0.0509842898364861,
-      "rate_period": "today",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 8,
-      "base_code": "JPY",
-      "payment_code": "IDR",
-      "rate_val": 107.0301378647,
-      "rate_period": "today",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 9,
-      "base_code": "JPY",
-      "payment_code": "CAD",
-      "rate_val": 0.00939660147483168,
-      "rate_period": "today",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 10,
-      "base_code": "JPY",
-      "payment_code": "MYR",
-      "rate_val": 0.0322584161590253,
-      "rate_period": "today",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 11,
-      "base_code": "JPY",
-      "payment_code": "SGD",
-      "rate_val": 0.0094434113497916,
-      "rate_period": "today",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 12,
-      "base_code": "JPY",
-      "payment_code": "HKD",
-      "rate_val": 0.0556505290157102,
-      "rate_period": "today",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 13,
-      "base_code": "JPY",
-      "payment_code": "NZD",
-      "rate_val": 0.0114119910227637,
-      "rate_period": "today",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 14,
-      "base_code": "JPY",
-      "payment_code": "THB",
-      "rate_val": 0.243186918884258,
-      "rate_period": "today",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 15,
-      "base_code": "JPY",
-      "payment_code": "NOK",
-      "rate_val": 0.0713529977556909,
-      "rate_period": "today",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 16,
-      "base_code": "JPY",
-      "payment_code": "INR",
-      "rate_val": 0.584408464251363,
-      "rate_period": "today",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 17,
-      "base_code": "JPY",
-      "payment_code": "PHP",
-      "rate_val": 0.389285027252325,
-      "rate_period": "today",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 18,
-      "base_code": "JPY",
-      "payment_code": "USD",
-      "rate_val": 0.00707764479704024,
-      "rate_period": "last_week",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 19,
-      "base_code": "JPY",
-      "payment_code": "EUR",
-      "rate_val": 0.00637957839647402,
-      "rate_period": "last_week",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 20,
-      "base_code": "JPY",
-      "payment_code": "GBP",
-      "rate_val": 0.00550777329876137,
-      "rate_period": "last_week",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 21,
-      "base_code": "JPY",
-      "payment_code": "CHF",
-      "rate_val": 0.00612570493727965,
-      "rate_period": "last_week",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 22,
-      "base_code": "JPY",
-      "payment_code": "AUD",
-      "rate_val": 0.01049598312156,
-      "rate_period": "last_week",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 23,
-      "base_code": "JPY",
-      "payment_code": "KRW",
-      "rate_val": 9.06664142270043,
-      "rate_period": "last_week",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 24,
-      "base_code": "JPY",
-      "payment_code": "CNY",
-      "rate_val": 0.0507227085875735,
-      "rate_period": "last_week",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 25,
-      "base_code": "JPY",
-      "payment_code": "IDR",
-      "rate_val": 106.396859607402,
-      "rate_period": "last_week",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 26,
-      "base_code": "JPY",
-      "payment_code": "CAD",
-      "rate_val": 0.00933903898534082,
-      "rate_period": "last_week",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 27,
-      "base_code": "JPY",
-      "payment_code": "MYR",
-      "rate_val": 0.0322614278722353,
-      "rate_period": "last_week",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 28,
-      "base_code": "JPY",
-      "payment_code": "SGD",
-      "rate_val": 0.00940591603716627,
-      "rate_period": "last_week",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 29,
-      "base_code": "JPY",
-      "payment_code": "HKD",
-      "rate_val": 0.0552947093943119,
-      "rate_period": "last_week",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 30,
-      "base_code": "JPY",
-      "payment_code": "NZD",
-      "rate_val": 0.0114224679385024,
-      "rate_period": "last_week",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 31,
-      "base_code": "JPY",
-      "payment_code": "THB",
-      "rate_val": 0.243197369826289,
-      "rate_period": "last_week",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 32,
-      "base_code": "JPY",
-      "payment_code": "NOK",
-      "rate_val": 0.0713335822390459,
-      "rate_period": "last_week",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 33,
-      "base_code": "JPY",
-      "payment_code": "INR",
-      "rate_val": 0.580158488980312,
-      "rate_period": "last_week",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 34,
-      "base_code": "JPY",
-      "payment_code": "PHP",
-      "rate_val": 0.386972734183356,
-      "rate_period": "last_week",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 35,
-      "base_code": "JPY",
-      "payment_code": "USD",
-      "rate_val": 0.00710593170729894,
-      "rate_period": "last_month",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 36,
-      "base_code": "JPY",
-      "payment_code": "EUR",
-      "rate_val": 0.00655995548562642,
-      "rate_period": "last_month",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 37,
-      "base_code": "JPY",
-      "payment_code": "GBP",
-      "rate_val": 0.00562280151006151,
-      "rate_period": "last_month",
-      "updated": "2023-07-29"
-      },
-      {
-      "id": 38,
-      "base_code": "JPY",
-      "payment_code": "CHF",
-      "rate_val": 0.00640059713815872,
-      "rate_period": "last_month",
-      "updated": "2023-07-29"
-      }
+    {
+    "id": 1,
+    "base_code": "JPY",
+    "payment_code": "USD",
+    "rate_val": 0.00701172250336301,
+    "rate_period": "today",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 2,
+    "base_code": "JPY",
+    "payment_code": "EUR",
+    "rate_val": 0.0064057395426302,
+    "rate_period": "today",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 3,
+    "base_code": "JPY",
+    "payment_code": "GBP",
+    "rate_val": 0.00552129908397924,
+    "rate_period": "today",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 4,
+    "base_code": "JPY",
+    "payment_code": "CHF",
+    "rate_val": 0.00614822881301646,
+    "rate_period": "today",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 5,
+    "base_code": "JPY",
+    "payment_code": "AUD",
+    "rate_val": 0.0106937415924668,
+    "rate_period": "today",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 6,
+    "base_code": "JPY",
+    "payment_code": "KRW",
+    "rate_val": 9.19479853949138,
+    "rate_period": "today",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 7,
+    "base_code": "JPY",
+    "payment_code": "CNY",
+    "rate_val": 0.0503881878162834,
+    "rate_period": "today",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 8,
+    "base_code": "JPY",
+    "payment_code": "IDR",
+    "rate_val": 106.492793543015,
+    "rate_period": "today",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 9,
+    "base_code": "JPY",
+    "payment_code": "CAD",
+    "rate_val": 0.00938312728204471,
+    "rate_period": "today",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 10,
+    "base_code": "JPY",
+    "payment_code": "MYR",
+    "rate_val": 0.0319383767855999,
+    "rate_period": "today",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 11,
+    "base_code": "JPY",
+    "payment_code": "SGD",
+    "rate_val": 0.00941707770162065,
+    "rate_period": "today",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 12,
+    "base_code": "JPY",
+    "payment_code": "HKD",
+    "rate_val": 0.0547594644801742,
+    "rate_period": "today",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 13,
+    "base_code": "JPY",
+    "payment_code": "NZD",
+    "rate_val": 0.0115360963423227,
+    "rate_period": "today",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 14,
+    "base_code": "JPY",
+    "payment_code": "THB",
+    "rate_val": 0.243936967522901,
+    "rate_period": "today",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 15,
+    "base_code": "JPY",
+    "payment_code": "NOK",
+    "rate_val": 0.0716533213759528,
+    "rate_period": "today",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 16,
+    "base_code": "JPY",
+    "payment_code": "INR",
+    "rate_val": 0.581192748702838,
+    "rate_period": "today",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 17,
+    "base_code": "JPY",
+    "payment_code": "PHP",
+    "rate_val": 0.391217731087054,
+    "rate_period": "today",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 52,
+    "base_code": "JPY",
+    "payment_code": "USD",
+    "rate_val": 0.00699692780337942,
+    "rate_period": "yesterday",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 53,
+    "base_code": "JPY",
+    "payment_code": "EUR",
+    "rate_val": 0.00640040962621608,
+    "rate_period": "yesterday",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 54,
+    "base_code": "JPY",
+    "payment_code": "GBP",
+    "rate_val": 0.00553430619559652,
+    "rate_period": "yesterday",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 55,
+    "base_code": "JPY",
+    "payment_code": "CHF",
+    "rate_val": 0.00613095238095238,
+    "rate_period": "yesterday",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 56,
+    "base_code": "JPY",
+    "payment_code": "AUD",
+    "rate_val": 0.0107194060419867,
+    "rate_period": "yesterday",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 57,
+    "base_code": "JPY",
+    "payment_code": "KRW",
+    "rate_val": 9.10643881208397,
+    "rate_period": "yesterday",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 58,
+    "base_code": "JPY",
+    "payment_code": "CNY",
+    "rate_val": 0.0501772913466462,
+    "rate_period": "yesterday",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 59,
+    "base_code": "JPY",
+    "payment_code": "IDR",
+    "rate_val": 106.131720430108,
+    "rate_period": "yesterday",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 60,
+    "base_code": "JPY",
+    "payment_code": "CAD",
+    "rate_val": 0.00935675883256528,
+    "rate_period": "yesterday",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 61,
+    "base_code": "JPY",
+    "payment_code": "MYR",
+    "rate_val": 0.031870839733743,
+    "rate_period": "yesterday",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 62,
+    "base_code": "JPY",
+    "payment_code": "SGD",
+    "rate_val": 0.00939452124935996,
+    "rate_period": "yesterday",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 63,
+    "base_code": "JPY",
+    "payment_code": "HKD",
+    "rate_val": 0.0546153353814644,
+    "rate_period": "yesterday",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 64,
+    "base_code": "JPY",
+    "payment_code": "NZD",
+    "rate_val": 0.0115111367127496,
+    "rate_period": "yesterday",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 65,
+    "base_code": "JPY",
+    "payment_code": "THB",
+    "rate_val": 0.242268305171531,
+    "rate_period": "yesterday",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 66,
+    "base_code": "JPY",
+    "payment_code": "NOK",
+    "rate_val": 0.0721742191500256,
+    "rate_period": "yesterday",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 67,
+    "base_code": "JPY",
+    "payment_code": "INR",
+    "rate_val": 0.579214669738863,
+    "rate_period": "yesterday",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 68,
+    "base_code": "JPY",
+    "payment_code": "PHP",
+    "rate_val": 0.388786482334869,
+    "rate_period": "yesterday",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 18,
+    "base_code": "JPY",
+    "payment_code": "USD",
+    "rate_val": 0.00702767049957088,
+    "rate_period": "last_week",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 19,
+    "base_code": "JPY",
+    "payment_code": "EUR",
+    "rate_val": 0.0064003846030935,
+    "rate_period": "last_week",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 20,
+    "base_code": "JPY",
+    "payment_code": "GBP",
+    "rate_val": 0.00549902630589188,
+    "rate_period": "last_week",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 21,
+    "base_code": "JPY",
+    "payment_code": "CHF",
+    "rate_val": 0.00614645261443994,
+    "rate_period": "last_week",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 22,
+    "base_code": "JPY",
+    "payment_code": "AUD",
+    "rate_val": 0.0106111892940084,
+    "rate_period": "last_week",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 23,
+    "base_code": "JPY",
+    "payment_code": "KRW",
+    "rate_val": 9.05043546136031,
+    "rate_period": "last_week",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 24,
+    "base_code": "JPY",
+    "payment_code": "CNY",
+    "rate_val": 0.0503522768441732,
+    "rate_period": "last_week",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 25,
+    "base_code": "JPY",
+    "payment_code": "IDR",
+    "rate_val": 106.303207721435,
+    "rate_period": "last_week",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 26,
+    "base_code": "JPY",
+    "payment_code": "CAD",
+    "rate_val": 0.00933226327591717,
+    "rate_period": "last_week",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 27,
+    "base_code": "JPY",
+    "payment_code": "MYR",
+    "rate_val": 0.0318439283633853,
+    "rate_period": "last_week",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 28,
+    "base_code": "JPY",
+    "payment_code": "SGD",
+    "rate_val": 0.0093817710780735,
+    "rate_period": "last_week",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 29,
+    "base_code": "JPY",
+    "payment_code": "HKD",
+    "rate_val": 0.0548027995691603,
+    "rate_period": "last_week",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 30,
+    "base_code": "JPY",
+    "payment_code": "NZD",
+    "rate_val": 0.0114362135451168,
+    "rate_period": "last_week",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 31,
+    "base_code": "JPY",
+    "payment_code": "THB",
+    "rate_val": 0.241226278310763,
+    "rate_period": "last_week",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 32,
+    "base_code": "JPY",
+    "payment_code": "NOK",
+    "rate_val": 0.0717016678642237,
+    "rate_period": "last_week",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 33,
+    "base_code": "JPY",
+    "payment_code": "INR",
+    "rate_val": 0.578877873284423,
+    "rate_period": "last_week",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 34,
+    "base_code": "JPY",
+    "payment_code": "PHP",
+    "rate_val": 0.386600090329734,
+    "rate_period": "last_week",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 35,
+    "base_code": "JPY",
+    "payment_code": "USD",
+    "rate_val": 0.00708451639070407,
+    "rate_period": "last_month",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 36,
+    "base_code": "JPY",
+    "payment_code": "EUR",
+    "rate_val": 0.00641334540029851,
+    "rate_period": "last_month",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 37,
+    "base_code": "JPY",
+    "payment_code": "GBP",
+    "rate_val": 0.00550485344975038,
+    "rate_period": "last_month",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 38,
+    "base_code": "JPY",
+    "payment_code": "CHF",
+    "rate_val": 0.00619955968038801,
+    "rate_period": "last_month",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 39,
+    "base_code": "JPY",
+    "payment_code": "AUD",
+    "rate_val": 0.0105353175776149,
+    "rate_period": "last_month",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 40,
+    "base_code": "JPY",
+    "payment_code": "KRW",
+    "rate_val": 9.11013586715389,
+    "rate_period": "last_month",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 41,
+    "base_code": "JPY",
+    "payment_code": "CNY",
+    "rate_val": 0.05093644115923,
+    "rate_period": "last_month",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 42,
+    "base_code": "JPY",
+    "payment_code": "IDR",
+    "rate_val": 106.653655578555,
+    "rate_period": "last_month",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 43,
+    "base_code": "JPY",
+    "payment_code": "CAD",
+    "rate_val": 0.00936796721052649,
+    "rate_period": "last_month",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 44,
+    "base_code": "JPY",
+    "payment_code": "MYR",
+    "rate_val": 0.0325274999126236,
+    "rate_period": "last_month",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 45,
+    "base_code": "JPY",
+    "payment_code": "SGD",
+    "rate_val": 0.00945958965866476,
+    "rate_period": "last_month",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 46,
+    "base_code": "JPY",
+    "payment_code": "HKD",
+    "rate_val": 0.0553823398450417,
+    "rate_period": "last_month",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 47,
+    "base_code": "JPY",
+    "payment_code": "NZD",
+    "rate_val": 0.0113944879260935,
+    "rate_period": "last_month",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 48,
+    "base_code": "JPY",
+    "payment_code": "THB",
+    "rate_val": 0.245500637633245,
+    "rate_period": "last_month",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 49,
+    "base_code": "JPY",
+    "payment_code": "NOK",
+    "rate_val": 0.0728667873689089,
+    "rate_period": "last_month",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 50,
+    "base_code": "JPY",
+    "payment_code": "INR",
+    "rate_val": 0.582154649533106,
+    "rate_period": "last_month",
+    "updated": "2023-08-06"
+    },
+    {
+    "id": 51,
+    "base_code": "JPY",
+    "payment_code": "PHP",
+    "rate_val": 0.38903634082619,
+    "rate_period": "last_month",
+    "updated": "2023-08-06"
+    }
   ]
 }
   
