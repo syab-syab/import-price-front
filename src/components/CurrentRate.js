@@ -20,7 +20,7 @@ export const CurrentRate = ({payCode, currentRate, codeKey}) => {
 			">
 			{/* USDの部分は選択された通貨コードに変えること */}
 				{/* JPY / USD : 0.00712105602060528 $ */}
-				JPY / {payCode} : {currentRate} {changeCurrencyUnit(localStorage.getItem(codeKey))}
+				JPY / {payCode} : {currentRate} {changeCurrencyUnit(codeKey)}
 			</p>
 			<span className="
 				text-xl

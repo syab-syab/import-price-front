@@ -1,9 +1,12 @@
 import React from 'react'
 import { useState } from 'react'
+import changeHowToSayJapanese from '../functions/changeHowToSayJapanese'
+import ConversionRateListItem from './microparts/ConversionRateListItem'
+import changeCurrencyUnit from '../functions/changeCurrencyUnit'
 
-export const ConversionRate = ({tRate, yRate, lWRate, lMRate}) => {
+export const ConversionRate = ({tRate, yRate, lWRate, lMRate, codeKey}) => {
 
-  const [price, setPrice] = useState(0)
+  const [price, setPrice] = useState(1)
 
 	// const [yerterdayPrice, setYesterdayPrice] = useState(0)
 
@@ -12,12 +15,10 @@ export const ConversionRate = ({tRate, yRate, lWRate, lMRate}) => {
 	// const [lastMonthPrice, setLastMonthPrice] = useState(0)
 
 
-  // 現時点ではusd と jpy のレートのみ
-  // あくまで仮置き
+	// それぞれの日時、期間のレート
   const todayRate = tRate
   
 	const yesterdayRate = yRate
-
 
 	const lastWeekRate = lWRate
 
@@ -42,10 +43,11 @@ export const ConversionRate = ({tRate, yRate, lWRate, lMRate}) => {
 				<label htmlFor="price-value" className="
 					font-bold
 				">
-				日本円での値段を入力してください。: </label>
+				日本円での値段 : </label>
 				<input type="number" id="price-value" value={price} onChange={handleChange} className="
 					border
 					border-black
+					text-center
 				" />
 			</div>
 
@@ -72,70 +74,20 @@ export const ConversionRate = ({tRate, yRate, lWRate, lMRate}) => {
 					<li className="
 						text-left
 					">
-					この商品は米ドルで
-					{/* コンポーネント化する */}
+					この商品は{changeHowToSayJapanese(codeKey)}で
 					<span className="
 						changed-price-beta
 						text-xl
 						sm:text-4xl
 					">
-						{price * todayRate}ドル
-					</span>
-					{/* コンポーネント化する・end */}
-					です！
-					</li>
-					<li className="
-						text-left
-					">
-					昨日と比べて
-					{/* コンポーネント化する */}
-					<span className="
-						changed-price-beta
-						text-xl
-						sm:text-4xl
-					">
-						{price * yesterdayRate}
-					</span>
-					{/* コンポーネント化する・end */}
-					<span className="
-						text-blue-600
-					">
-							お得
+						{price * todayRate} {changeCurrencyUnit(codeKey)}
 					</span>
 					です！
 					</li>
-					<li className="
-						text-left
-					">
-					先週と比べて
-					{/* コンポーネント化する */}
-					<span className="
-						changed-price-beta
-						text-xl
-						sm:text-4xl
-					">
-						{price * lastWeekRate}
-					</span>
-					{/* コンポーネント化する・end */}
-					<span className="
-						text-red-600
-					">
-						損
-					</span>
-					です！
-					</li>
-					<li className="
-						text-left
-					">
-					先月と比べて
-					<span className="
-						changed-price-beta
-						text-blue-600
-					">
-							{price * lastMonthRate}
-					</span>
-					です！
-					</li>
+					<ConversionRateListItem period={"昨日"} price={price * yesterdayRate} todayPrice={price * todayRate} />
+					<ConversionRateListItem period={"先週"} price={price * lastWeekRate} todayPrice={price * todayRate} />
+					<ConversionRateListItem period={"先月"} price={price * lastMonthRate} todayPrice={price * todayRate} />
+
 				</ul>
 			</div>
 		</div>     

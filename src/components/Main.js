@@ -16,6 +16,8 @@ export const Main = () => {
   // useStateの代入に利用する
   let localPaymentCode = ""
 
+  // localStrageに何も入ってなければ
+  // 初期値は USD を入れておく
   if (!(localStorage.getItem(codeKey))) {
     localStorage.setItem(codeKey, "USD")
     localPaymentCode = localStorage.getItem(codeKey)
@@ -58,31 +60,31 @@ export const Main = () => {
   // todayの全コードのrate
   const today_rates = localRateData.filter(element => element.rate_period === "today")
 
-  // todayの選ばれたコードのrate
+  // todayの選択された通貨コードのrate
   const today_code_rate = today_rates.filter(element => element.payment_code === crCode)[0].rate_val
 
   // yesterdayの全コードのrate
   const yesterday_rates = localRateData.filter(element => element.rate_period === "yesterday")
 
-  // yesterdayの選ばれたコードのrate
+  // yesterdayの選択された通貨コードのrate
   const yesterday_code_rate = yesterday_rates.filter(element => element.payment_code === crCode)[0].rate_val
-
   
   // lastweekの全コードのrate
   const last_week_rates = localRateData.filter(element => element.rate_period === "last_week")
 
-  // last_weekの選ばれたコードのrate
+  // last_weekの選択された通貨コードのrate
   const last_week_code_rate = last_week_rates.filter(element => element.payment_code === crCode)[0].rate_val
 
 
   // last_monthの全コードのrate
   const last_month_rates = localRateData.filter(element => element.rate_period === "last_month")
 
-  // last_monthの選ばれたコードのrate
+  // last_monthの選択された通貨コードのrate
   const last_month_code_rate = last_month_rates.filter(element => element.payment_code === crCode)[0].rate_val
 
 
-  // 通貨コードを選択するたびにcrCodeを変える
+  // 通貨コードを選択するたびにcrCodeを変えて
+  // localStrageの値も変える
   const handleChange = (e) => {
     localStorage.setItem(codeKey, e.target.value)
     setCrCode(e.target.value)
@@ -103,17 +105,16 @@ export const Main = () => {
         sm:py-20
       ">
         <ChoiceCode type={crCode} method={handleChange} />
-        <CurrentRate payCode={crCode} currentRate={today_code_rate} codeKey={codeKey} />
+        <CurrentRate payCode={crCode} currentRate={today_code_rate} codeKey={localStorage.getItem(codeKey)} />
         {/* [TODO] ConversionRateに昨日、先週、先月のレートを渡す */}
         <ConversionRate
           tRate={today_code_rate}
           yRate={yesterday_code_rate}
           lWRate={last_week_code_rate}
           lMRate={last_month_code_rate}
+          codeKey={localStorage.getItem(codeKey)}
         />
       </main>
-      {/* { rates && console.log(rates.filter(element => element.payment_code === 'USD'))} */}
-      {/* { console.log(val_rate) } */}
     </>
   )
 }
