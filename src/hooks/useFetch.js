@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 // 引数keyに格納されたキーを使ってLocalStrageへ格納
 const useFetch = (url, key) => {
-  const [data, setItems] = useState(null);
+  const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(true);
 
@@ -16,7 +16,7 @@ const useFetch = (url, key) => {
       // trueの場合
       // ローカルストレージにあるデータは文字列化しているから
       // JSON.parseで配列(オブジェクトに戻す)
-      setItems(JSON.parse(localData))
+      setData(JSON.parse(localData))
       setIsLoaded(false)
       setError(null)
     } else {
@@ -33,7 +33,7 @@ const useFetch = (url, key) => {
           })
           .then(data => {
             setIsLoaded(false);
-            setItems(data);
+            setData(data);
             // ここに格納の処理
             // ローカルストレージに格納する場合は
             // 文字列に直さないとおかしくなる(取り出した時に戻せばいい)

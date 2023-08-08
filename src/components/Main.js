@@ -4,7 +4,10 @@ import { CurrentRate } from './CurrentRate'
 import ConversionRate from './ConversionRate'
 // import useFetch from '../hooks/useFetch'
 import { useState } from 'react'
+// APIの容易が出来たらtestRatesはすべてuseFetchに修正する
 import testRates from '../data/test-data.json'
+import ConversionRateListItem from './microparts/ConversionRateListItem'
+// import localStorageManage from '../functions/localStorageManage'
 
 export const Main = () => {
 
@@ -40,11 +43,42 @@ export const Main = () => {
 
   const rateKey = "local-rates"
 
-  // ローカルストレージにデータがあるかどうか
-  // あるならその値を格納、無いならnullが入る
+  // データを格納する用の変数
   let localRateData = ""
 
+  // ローカルストレージにデータがあるかどうか
+  // あるならその値を格納され、無いならnullが入る
+  // 真偽値のチェックにも使える
   let localRateDataCheck = localStorage.getItem(rateKey)
+
+  // ^^^^^ レートのデータの期限の処理(後々別ファイルに切り出す) ^^^^^^
+
+  let ymdArray = JSON.parse(localRateDataCheck)[0].updated.split('-')
+
+  // new Dateで任意の日付を取得するには、月だけ-1の数値にする
+  // apiの更新時間(予定では毎朝6時にするから余裕をもって一時間後の7時にする)
+  // let tmpDate = new Date(Date.UTC(Number(ymdArray[0]), Number(ymdArray[1])-1, Number(ymdArray[2])+1))
+  let tmpDate = new Date(Number(ymdArray[0]), Number(ymdArray[1])-1, Number(ymdArray[2])+1)
+  let limitDate = tmpDate.getTime() + 25200000
+  console.log("更新時間 = " + new Date(limitDate))
+  // console.log(limitDate)
+
+  let todayTmp = new Date()
+  let todayDate = todayTmp.getTime()
+  console.log("現在の時間 = " + todayTmp)
+
+  console.log(limitDate <= todayDate)
+
+  // 今日の日付とlimitDateをミリ秒に変換
+  // 今日のミリ秒が大なりならlocalStrageのlocal-ratesを削除
+  
+  // 8/7 07:00 => 8/9 07:00  => 8/10 07:00 => 8/11 07:00 .....
+  //      8/8 08:00 -> 8/9 9:00 -> 8/10 10:00 -> .....
+
+
+
+
+  // vvvvvv レートのデータの期限の処理 vvvvvv
 
   if (!(localRateDataCheck)) {
     localStorage.setItem(rateKey, JSON.stringify(testRates['test-rates']))
@@ -54,7 +88,7 @@ export const Main = () => {
     localRateData = JSON.parse(localRateDataCheck)
   }
 
-  console.log("localRateData = " + typeof(localRateData))
+  // console.log("localRateData = " + typeof(localRateData))
 
 
   // todayの全コードのrate
@@ -104,6 +138,10 @@ export const Main = () => {
         py-3
         sm:py-20
       ">
+        <div>
+          <p>更新時間 = {String(new Date(limitDate))}</p>
+          <p>現在の時間 = {String(todayTmp)}</p>
+        </div>
         <ChoiceCode type={crCode} method={handleChange} />
         <CurrentRate payCode={crCode} currentRate={today_code_rate} codeKey={localStorage.getItem(codeKey)} />
         {/* [TODO] ConversionRateに昨日、先週、先月のレートを渡す */}
