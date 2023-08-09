@@ -60,16 +60,22 @@ export const Main = () => {
   const timeCheck = () => {
     const limitTime = [0, 4, 8, 12, 16, 20, 24]
     const now = new Date()
-    return limitTime.includes(now.getHours())
+    // 時間だけだとその時間(Hour)以内では何度も更新してしまうので
+    // 他にも条件を付ける
+    // 例えば年、日付、分
+    // 最後に更新した日付と時間をローカルに入れとくといいかもしれない
+    if (limitTime.includes(now.getHours())) {
+      return true
+    } else {
+      return false
+    }
   }
 
 
   // vvvvvv レートのデータの期限の処理 vvvvvv
 
   if (!(localRateDataCheck) || timeCheck()) {
-    // 有っても無くてもいったん削除
-    localStorage.removeItem(rateKey)
-    // その後ローカルに入れる
+
     localStorage.setItem(rateKey, JSON.stringify(testRates['test-rates']))
     const tmp = localStorage.getItem(rateKey)
     localRateData = JSON.parse(tmp)
