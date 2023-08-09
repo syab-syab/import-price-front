@@ -6,7 +6,7 @@ import ConversionRate from './ConversionRate'
 import { useState } from 'react'
 // APIの容易が出来たらtestRatesはすべてuseFetchに修正する
 import testRates from '../data/test-data.json'
-import ConversionRateListItem from './microparts/ConversionRateListItem'
+// import ConversionRateListItem from './microparts/ConversionRateListItem'
 // import localStorageManage from '../functions/localStorageManage'
 
 export const Main = () => {
