@@ -1,5 +1,6 @@
 import React from 'react'
 import changeCurrencyUnit from '../functions/changeCurrencyUnit'
+import "/node_modules/flag-icons/css/flag-icons.min.css"
 
 export const CurrentRate = ({payCode, currentRate, codeKey}) => {
 
@@ -20,6 +21,12 @@ export const CurrentRate = ({payCode, currentRate, codeKey}) => {
 			">
 			{/* USDの部分は選択された通貨コードに変えること */}
 				{/* JPY / USD : 0.00712105602060528 $ */}
+				{/* 通貨コードの脇に小さく国旗の画像を見えるようにしたい */}
+				<span className="bg-[linear-gradient(180deg,_#ABCAE9_35%,_#FFF_35%_40%,_#000000_40%_60%,_#FFF_60%_65%,_#ABCAE9_65%)]">;</span>
+				{/* <span>
+
+				</span>
+				 */}
 				JPY / {payCode} : {currentRate} {changeCurrencyUnit(codeKey)}
 			</p>
 			<span className="

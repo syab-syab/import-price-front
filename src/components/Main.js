@@ -53,39 +53,30 @@ export const Main = () => {
 
   // ^^^^^ レートのデータの期限の処理(後々別ファイルに切り出す) ^^^^^^
 
-  let ymdArray = JSON.parse(localRateDataCheck)[0].updated.split('-')
+  // 4時間ごとにレートを取得し直す
+  // 0:00, 4:00, 8:00, 12:00, 16:00, 20:00, 24:00(0:00)
+  // 時間が↑のいずれかに該当するとき"local-rates"の値を削除
 
-  // new Dateで任意の日付を取得するには、月だけ-1の数値にする
-  // apiの更新時間(予定では毎朝6時にするから余裕をもって一時間後の7時にする)
-  // let tmpDate = new Date(Date.UTC(Number(ymdArray[0]), Number(ymdArray[1])-1, Number(ymdArray[2])+1))
-  let tmpDate = new Date(Number(ymdArray[0]), Number(ymdArray[1])-1, Number(ymdArray[2])+1)
-  let limitDate = tmpDate.getTime() + 25200000
-  console.log("更新時間 = " + new Date(limitDate))
-  // console.log(limitDate)
-
-  let todayTmp = new Date()
-  let todayDate = todayTmp.getTime()
-  console.log("現在の時間 = " + todayTmp)
-
-  console.log(limitDate <= todayDate)
-
-  // 今日の日付とlimitDateをミリ秒に変換
-  // 今日のミリ秒が大なりならlocalStrageのlocal-ratesを削除
-  
-  // 8/7 07:00 => 8/9 07:00  => 8/10 07:00 => 8/11 07:00 .....
-  //      8/8 08:00 -> 8/9 9:00 -> 8/10 10:00 -> .....
-
-
+  const timeCheck = () => {
+    const limitTime = [0, 4, 8, 12, 16, 20, 24]
+    const now = new Date()
+    return limitTime.includes(now.getHours())
+  }
 
 
   // vvvvvv レートのデータの期限の処理 vvvvvv
 
-  if (!(localRateDataCheck)) {
+  if (!(localRateDataCheck) || timeCheck()) {
+    // 有っても無くてもいったん削除
+    localStorage.removeItem(rateKey)
+    // その後ローカルに入れる
     localStorage.setItem(rateKey, JSON.stringify(testRates['test-rates']))
     const tmp = localStorage.getItem(rateKey)
     localRateData = JSON.parse(tmp)
+    console.log("ローカル削除+格納")
   } else {
     localRateData = JSON.parse(localRateDataCheck)
+    console.log("ローカル維持")
   }
 
   // console.log("localRateData = " + typeof(localRateData))
@@ -122,7 +113,7 @@ export const Main = () => {
   const handleChange = (e) => {
     localStorage.setItem(codeKey, e.target.value)
     setCrCode(e.target.value)
-    console.log(crCode)
+    // console.log(crCode)
   }
 
   return (
@@ -138,10 +129,7 @@ export const Main = () => {
         py-3
         sm:py-20
       ">
-        <div>
-          <p>更新時間 = {String(new Date(limitDate))}</p>
-          <p>現在の時間 = {String(todayTmp)}</p>
-        </div>
+
         <ChoiceCode type={crCode} method={handleChange} />
         <CurrentRate payCode={crCode} currentRate={today_code_rate} codeKey={localStorage.getItem(codeKey)} />
         {/* [TODO] ConversionRateに昨日、先週、先月のレートを渡す */}
