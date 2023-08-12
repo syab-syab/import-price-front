@@ -8,6 +8,8 @@ import { useState } from 'react'
 import testRates from '../data/test-data.json'
 // import ConversionRateListItem from './microparts/ConversionRateListItem'
 // import localStorageManage from '../functions/localStorageManage'
+import SelectCombination from './SelectCombination'
+import SelectFourValues from './SelectFourValues'
 
 export const Main = () => {
 
@@ -125,7 +127,8 @@ export const Main = () => {
   return (
     <>
       <main  className="
-        bg-emerald-200
+        bg-orange-100
+        text-yellow-900
         
         mx-auto
         
@@ -135,10 +138,11 @@ export const Main = () => {
         py-3
         sm:py-20
       ">
-
+        <SelectCombination />
         <ChoiceCode type={crCode} method={handleChange} />
         <CurrentRate payCode={crCode} currentRate={today_code_rate} codeKey={localStorage.getItem(codeKey)} />
         {/* [TODO] ConversionRateに昨日、先週、先月のレートを渡す */}
+        <SelectFourValues />
         <ConversionRate
           tRate={today_code_rate}
           yRate={yesterday_code_rate}

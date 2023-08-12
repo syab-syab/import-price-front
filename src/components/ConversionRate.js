@@ -43,12 +43,17 @@ export const ConversionRate = ({tRate, yRate, lWRate, lMRate, codeKey}) => {
 				<label htmlFor="price-value" className="
 					font-bold
 				">
-				日本円での値段 : </label>
+				値段 : </label>
 				<input type="number" id="price-value" value={price} onChange={handleChange} className="
 					border
 					border-black
 					text-center
 				" />
+				<span className='
+					font-bold
+				'>
+					円
+				</span>
 			</div>
 
 			<p className="

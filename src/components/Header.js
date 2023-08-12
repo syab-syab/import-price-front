@@ -3,10 +3,11 @@ import React from 'react'
 export const Header = () => {
   return (
     <header className="
-      bg-blue-400
+      bg-black
       pt-24
       pb-2
-      bg-opacity-40
+      text-white
+      bg-opacity-50
       overflow-hidden
     ">
     {/* ヘッダー・タイトル */}

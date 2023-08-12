@@ -1,5 +1,7 @@
 import React from 'react'
 
+// バックエンドが変わってしまったためこちらも変更
+
 // 昨日・先週・先月 とくらべて
 // ***** ドル 高い=赤 安い=青(緑) 同じ=黄色
 const ConversionRateListItem = ({period, price, todayPrice }) => {
