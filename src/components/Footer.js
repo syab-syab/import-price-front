@@ -12,13 +12,7 @@ export const Footer = () => {
         <span className="
           red
         ">
-          *このサイトの為替レートはforex-pythonを用いて計算しています。
-        </span>
-        <br />
-        <span className="
-          red
-        ">
-          *正確性は保証いたしかねます。あくまで娯楽としてお楽しみください。
+          *レートの正確性は保証いたしかねます。あくまで娯楽としてお楽しみください。
         </span>
         <br />
         {/* フッター・コピーライト */}

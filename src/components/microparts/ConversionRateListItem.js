@@ -4,7 +4,7 @@ import React from 'react'
 
 // 昨日・先週・先月 とくらべて
 // ***** ドル 高い=赤 安い=青(緑) 同じ=黄色
-const ConversionRateListItem = ({period, price, todayPrice }) => {
+const ConversionRateListItem = ({price, todayPrice }) => {
 
   const toggleClass = (todayP, pastP) => {
     if (todayP < pastP) {
@@ -23,7 +23,7 @@ const ConversionRateListItem = ({period, price, todayPrice }) => {
       <li className="
         text-left
       ">
-      {period} は
+      XXX は
       <span
       // className="
       //   changed-price-beta

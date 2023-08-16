@@ -6,10 +6,9 @@ import ConversionRate from './ConversionRate'
 import { useState } from 'react'
 // APIの容易が出来たらtestRatesはすべてuseFetchに修正する
 import testRates from '../data/test-data.json'
-// import ConversionRateListItem from './microparts/ConversionRateListItem'
-// import localStorageManage from '../functions/localStorageManage'
-import SelectCombination from './SelectCombination'
 import SelectFourValues from './SelectFourValues'
+// 新テストデータ↓
+import testRates2 from '../data/test-data2.json'
 
 export const Main = () => {
 
@@ -102,18 +101,12 @@ export const Main = () => {
   // yesterdayの選択された通貨コードのrate
   const yesterday_code_rate = yesterday_rates.filter(element => element.payment_code === crCode)[0].rate_val
   
-  // lastweekの全コードのrate
-  const last_week_rates = localRateData.filter(element => element.rate_period === "last_week")
-
-  // last_weekの選択された通貨コードのrate
-  const last_week_code_rate = last_week_rates.filter(element => element.payment_code === crCode)[0].rate_val
-
-
-  // last_monthの全コードのrate
-  const last_month_rates = localRateData.filter(element => element.rate_period === "last_month")
-
-  // last_monthの選択された通貨コードのrate
-  const last_month_code_rate = last_month_rates.filter(element => element.payment_code === crCode)[0].rate_val
+  // 新テストデータ
+  // カンマ(,)で区切られたレートと日付を配列に直す
+  // さらにレートのみfloatに変換する
+  const new_test_data = testRates2["test-rates"]
+  console.log(new_test_data.filter(e => e.payment_code === "USD")[0].rate_val.split(",")[0])
+  console.log(new_test_data.filter(e => e.payment_code === "USD")[0].rate_dates.split(",")[0])
 
 
   // 通貨コードを選択するたびにcrCodeを変えて
@@ -138,7 +131,6 @@ export const Main = () => {
         py-3
         sm:py-20
       ">
-        <SelectCombination />
         <ChoiceCode type={crCode} method={handleChange} />
         <CurrentRate payCode={crCode} currentRate={today_code_rate} codeKey={localStorage.getItem(codeKey)} />
         {/* [TODO] ConversionRateに昨日、先週、先月のレートを渡す */}
@@ -146,8 +138,6 @@ export const Main = () => {
         <ConversionRate
           tRate={today_code_rate}
           yRate={yesterday_code_rate}
-          lWRate={last_week_code_rate}
-          lMRate={last_month_code_rate}
           codeKey={localStorage.getItem(codeKey)}
         />
       </main>
