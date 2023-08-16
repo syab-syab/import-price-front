@@ -48,24 +48,30 @@ export const Header = () => {
       ">
         ABOUT
       </span>
-      <span className="
+      <a className="
         border-b-2
         border-transparent
         hover:border-white       
         transition-all
         duration-500
-      ">
+      "
+      href='https://twitter.com/nomeatnolifeno1'
+      target='blank'
+      >
         TWITTER
-      </span>
-      <span className="
+      </a>
+      <a className="
         border-b-2
         border-transparent
         hover:border-white       
         transition-all
         duration-500
-      ">
+      "
+      href='https://www.youtube.com/channel/UCy1-DE9tWCWgQE82JYJGfLA'
+      target='blank'
+      >
         YOUTUBE
-      </span>
+      </a>
     </div>
   </header>
   )

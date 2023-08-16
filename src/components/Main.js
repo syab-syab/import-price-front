@@ -6,7 +6,6 @@ import ConversionRate from './ConversionRate'
 import { useState } from 'react'
 // APIの容易が出来たらtestRatesはすべてuseFetchに修正する
 import testRates from '../data/test-data.json'
-import SelectFourValues from './SelectFourValues'
 // 新テストデータ↓
 import testRates2 from '../data/test-data2.json'
 
@@ -134,7 +133,6 @@ export const Main = () => {
         <ChoiceCode type={crCode} method={handleChange} />
         <CurrentRate payCode={crCode} currentRate={today_code_rate} codeKey={localStorage.getItem(codeKey)} />
         {/* [TODO] ConversionRateに昨日、先週、先月のレートを渡す */}
-        <SelectFourValues />
         <ConversionRate
           tRate={today_code_rate}
           yRate={yesterday_code_rate}

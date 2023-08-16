@@ -1,0 +1,84 @@
+index.js
+  起点。
+
+App.js
+  次の起点。
+
+  src
+    components(ディレクトリ)
+      Main.js
+        HeaderとFooter以外のコンポーネントをまとめる。
+        選択されたキーとレートのデータの管理はここでする。
+        データは決められた時間に更新する(途中)。
+
+
+      Header.js
+        ヘッダーのコンポーネント。
+        他のサイトのリンクも載せる
+
+      ChoiceCode.js
+        円から変換する通貨コードを選択する。
+        dataディレクトリのcurrency-code.jsonから値を取ってくる。
+
+      CurrentRate.js
+        JPY / XXX(選択された外貨)の現在のレートを載せる。
+        functionsディレクトリのchangeCurrencyUnit.jsから関数を持ってくる。
+
+      ConversionRate.js
+        入力された円の値段を、選択した外貨で換算する。
+        さらに選択された今日(CurrentRateで言う現在)以外の日付の過去のレート
+        をと比較する(未実装)。
+
+      Footer.js
+        フッターのコンポーネント。
+        コピーライトを記載する。
+
+      microparts(ディレクトリ)
+        ConversionRateListItem.js
+          ConversionRateと合わせて使うことが前提のコンポーネント。
+          過去のレートで入力された円の値を換算する。
+          値段が現在のものと比較して色を変えたりコメントを付けたりする(途中)
+    
+    data(ディレクトリ)
+      currency-code.json
+        ChoiceCodeで選べる値をまとめたファイル。
+
+      test-data.json
+        前のテストデータ。いずれ削除する。
+
+      test-data2.json
+        現在の形式のテストデータ。
+        これに対応できるように修正する(その後上のファイルに置き換える)。
+        各日のレート(rate_val)と日付(rate_dates)は
+        カンマ区切りの文字列でまとめてあるから
+        split関数で配列に戻して使う。
+        レートと日付の順番はそれぞれ対応していて、
+        例えば配列(に直したと仮定して)の最初のレートは最初の日付のものである
+        という感じ。
+
+
+    functions(ディレクトリ)
+      changeCurrencyUnit.js
+        CurrentRate で使う。
+        選択された通貨コードによって通貨マークを変える関数。
+
+      changeHowToSayJapanese.js
+        ConversionRate で使う。
+        選択された通貨コードを日本語のわかりやすい言い方で表す。
+
+    hooks(ディレクトリ)
+      useFetch.js
+        外部のREST APIからデータを取ってくる。
+        取ってきたデータをローカルストレージに保存する。
+        Mainコンポーネントで使う。
+        渡される変数はアクセスするurlとローカルで保存する用のキー。
+
+
+※ローカルストレージのキー
+payment-code
+  現在選択されている通貨コード。
+  何もなければ初期値は USD にされる。
+
+local-rates
+  テスト用のデータを保存してある。
+  本番環境では名前を変える。

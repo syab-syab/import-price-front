@@ -14,6 +14,13 @@ export const CurrentRate = ({payCode, currentRate, codeKey}) => {
 			text-xl
 			sm:text-3xl
 		">
+			<p className='
+				font-bold
+
+				mb-2
+			'>
+				現在のレート
+			</p>
 			{/* <p>USD / JPY : 144.272 円</p> */}
 			<p className="
 				font-bold
