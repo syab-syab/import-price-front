@@ -2,7 +2,7 @@ import React from 'react'
 import changeCurrencyUnit from '../functions/changeCurrencyUnit'
 import "/node_modules/flag-icons/css/flag-icons.min.css"
 
-export const CurrentRate = ({payCode, currentRate, codeKey}) => {
+export const CurrentRate = ({payCode, currentRate, codeKey, lastUpdate, currentRatesDate}) => {
 
   return (
 		// メイン・現在のレート
@@ -40,8 +40,14 @@ export const CurrentRate = ({payCode, currentRate, codeKey}) => {
 				text-xl
 				text-red-600
 			">
-				*この値はあくまで仮置きです。
+				*この値は{currentRatesDate}のものです。
 			</span>
+			<p className='
+				font-bold
+				text-base
+			'>
+				最終更新：{lastUpdate}
+			</p>
 		</div>
   )
 }

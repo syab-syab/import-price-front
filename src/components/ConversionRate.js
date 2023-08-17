@@ -4,7 +4,7 @@ import changeHowToSayJapanese from '../functions/changeHowToSayJapanese'
 import ConversionRateListItem from './microparts/ConversionRateListItem'
 import changeCurrencyUnit from '../functions/changeCurrencyUnit'
 
-export const ConversionRate = ({tRate, yRate, codeKey}) => {
+export const ConversionRate = ({tRate, codeKey}) => {
 
   const [price, setPrice] = useState(1)
 
@@ -17,9 +17,6 @@ export const ConversionRate = ({tRate, yRate, codeKey}) => {
 
 	// それぞれの日時、期間のレート
   const todayRate = tRate
-  
-	const yesterdayRate = yRate
-
 
   const handleChange = (e) => {
     setPrice(() => e.target.value)
@@ -86,7 +83,9 @@ export const ConversionRate = ({tRate, yRate, codeKey}) => {
 					</span>
 					です！
 					</li>
-					<ConversionRateListItem price={price * yesterdayRate} todayPrice={price * todayRate} />
+					{/* ↓のコンポーネントに換算した値を渡す */}
+					{/* 昨日とか過去のレートは渡さない */}
+					<ConversionRateListItem />
 
 				</ul>
 			</div>

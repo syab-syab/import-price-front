@@ -5,7 +5,7 @@ import ConversionRate from './ConversionRate'
 // import useFetch from '../hooks/useFetch'
 import { useState } from 'react'
 // APIの容易が出来たらtestRatesはすべてuseFetchに修正する
-import testRates from '../data/test-data.json'
+// import testRates from '../data/test-data.json'
 // 新テストデータ↓
 import testRates2 from '../data/test-data2.json'
 
@@ -42,6 +42,7 @@ export const Main = () => {
   // **** まだAPIの準備ができていないのでtest-data.jsonかデータ持ってくる  *****
 
   const rateKey = "local-rates"
+  // console.log(rateKey)
 
   // データを格納する用の変数
   let localRateData = ""
@@ -49,7 +50,7 @@ export const Main = () => {
   // ローカルストレージにデータがあるかどうか
   // あるならその値を格納され、無いならnullが入る
   // 真偽値のチェックにも使える
-  let localRateDataCheck = localStorage.getItem(rateKey)
+  // let localRateDataCheck = localStorage.getItem(rateKey)
 
   // ^^^^^ レートのデータの期限の処理(後々別ファイルに切り出す) ^^^^^^
 
@@ -57,63 +58,65 @@ export const Main = () => {
   // 0:00, 4:00, 8:00, 12:00, 16:00, 20:00, 24:00(0:00)
   // 時間が↑のいずれかに該当するとき"local-rates"の値を削除
 
-  const timeCheck = () => {
-    const limitTime = [0, 4, 8, 12, 16, 20, 24]
-    const now = new Date()
-    // 時間だけだとその時間(Hour)以内では何度も更新してしまうので
-    // 他にも条件を付ける
-    // 例えば年、日付、分
-    // 最後に更新した日付と時間をローカルに入れとくといいかもしれない
-    if (limitTime.includes(now.getHours())) {
-      return true
-    } else {
-      return false
-    }
-  }
+  // const timeCheck = () => {
+  //   const limitTime = [0, 4, 8, 12, 16, 20, 24]
+  //   const now = new Date()
+    // \時間だけだとその時間(Hour)以内では何度も更新してしまうので
+    // \他にも条件を付ける
+    // \例えば年、日付、分
+    // \最後に更新した日付と時間をローカルに入れとくといいかもしれない
+    // if (limitTime.includes(now.getHours())) {
+    //   return true
+    // } else {
+    //   return false
+    // }
+  // }
 
 
   // vvvvvv レートのデータの期限の処理 vvvvvv
 
-  if (!(localRateDataCheck) || timeCheck()) {
-
-    localStorage.setItem(rateKey, JSON.stringify(testRates['test-rates']))
-    const tmp = localStorage.getItem(rateKey)
-    localRateData = JSON.parse(tmp)
-    console.log("ローカル削除+格納")
-  } else {
-    localRateData = JSON.parse(localRateDataCheck)
-    console.log("ローカル維持")
-  }
+  // if (!(localRateDataCheck) || timeCheck()) {
+  //   localStorage.setItem(rateKey, JSON.stringify(testRates2['test-rates']))
+  //   const tmp = localStorage.getItem(rateKey)
+  //   localRateData = JSON.parse(tmp)
+  //   console.log("ローカル削除+格納")
+  // } else {
+  //   localRateData = JSON.parse(localRateDataCheck)
+  //   console.log("ローカル維持")
+  // }
 
   // console.log("localRateData = " + typeof(localRateData))
 
-
-  // todayの全コードのrate
-  const today_rates = localRateData.filter(element => element.rate_period === "today")
-
-  // todayの選択された通貨コードのrate
-  const today_code_rate = today_rates.filter(element => element.payment_code === crCode)[0].rate_val
-
-  // yesterdayの全コードのrate
-  const yesterday_rates = localRateData.filter(element => element.rate_period === "yesterday")
-
-  // yesterdayの選択された通貨コードのrate
-  const yesterday_code_rate = yesterday_rates.filter(element => element.payment_code === crCode)[0].rate_val
-  
   // 新テストデータ
   // カンマ(,)で区切られたレートと日付を配列に直す
-  // さらにレートのみfloatに変換する
   const new_test_data = testRates2["test-rates"]
-  console.log(new_test_data.filter(e => e.payment_code === "USD")[0].rate_val.split(",")[0])
-  console.log(new_test_data.filter(e => e.payment_code === "USD")[0].rate_dates.split(",")[0])
 
+  localStorage.setItem(rateKey, JSON.stringify(new_test_data))
+
+  // 選択された通貨コードから通貨レートを取得し配列に直す
+  localRateData = JSON.parse(localStorage.getItem(rateKey))
+  const crCode_data = localRateData.filter(e => e.payment_code === crCode)[0]
+
+  // 選択されたコードのレートを配列に直す
+  // 配列の一番初めのレートを現在のレートとして切り出すこと(要parseFloat())
+  const today_rate_crCode = crCode_data.rate_val.split(",")
+
+  // 選択されたコードのレートに対応した日付の配列
+  // 一番初めの文字列がレートの配列の最初の値に対応する感じで後に続く値も同じように扱う(型変換不要)
+  const date_array_crCode = crCode_data.rate_dates.split(",")
+
+  // 選択されたコードのレートの更新日
+  const last_update_date_crCode = crCode_data.updated
 
   // 通貨コードを選択するたびにcrCodeを変えて
   // localStrageの値も変える
   const handleChange = (e) => {
+    console.log("handleChange start")
     localStorage.setItem(codeKey, e.target.value)
-    setCrCode(e.target.value)
-    // console.log(crCode)
+    // setCrCode(e.target.value[0])
+    setCrCode(localStorage.getItem(codeKey))
+    console.log(crCode)
+    console.log("handleChange end")
   }
 
   return (
@@ -131,11 +134,16 @@ export const Main = () => {
         sm:py-20
       ">
         <ChoiceCode type={crCode} method={handleChange} />
-        <CurrentRate payCode={crCode} currentRate={today_code_rate} codeKey={localStorage.getItem(codeKey)} />
-        {/* [TODO] ConversionRateに昨日、先週、先月のレートを渡す */}
+        <CurrentRate
+          payCode={crCode}
+          currentRate={parseFloat(today_rate_crCode[0])}
+          codeKey={localStorage.getItem(codeKey)}
+          lastUpdate={last_update_date_crCode}
+          currentRatesDate={date_array_crCode[0]}
+        />
+        {/* [TODO] ConversionRateに日付とレートの配列を渡す */}
         <ConversionRate
-          tRate={today_code_rate}
-          yRate={yesterday_code_rate}
+          tRate={parseFloat(today_rate_crCode[0])}
           codeKey={localStorage.getItem(codeKey)}
         />
       </main>
