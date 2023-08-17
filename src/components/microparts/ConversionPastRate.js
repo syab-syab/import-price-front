@@ -1,36 +1,33 @@
 import React from 'react'
 import { useState } from 'react'
+import changeCurrencyUnit from '../../functions/changeCurrencyUnit'
 
 // 現在のレートで換算した値と日付とレートの配列を受け取って
 // 選択された日付のレートと比較
-// ***** ドル 高い=赤 安い=青(緑) 同じ=黄色
-const ConversionPastRate = ({currentPrice, selectDatesArr, selectRatesArr}) => {
+const ConversionPastRate = ({currentPrice, convertPrice, selectDatesArr, selectRatesArr, codeKey}) => {
 
-  const [arrIndex, setArrIndex] = useState(0)
+  const [arrIndex, setArrIndex] = useState(1)
 
-  // const toggleClass = (todayP, pastP) => {
-  //   if (todayP < pastP) {
-  //     return "text-green-500 text-xl sm:text-4xl"
-  //   } else if (todayP > pastP) {
-  //     return "text-red-600  text-xl sm:text-4xl"
-  //   } else if (todayP === pastP) {
-  //     return "text-yellow-500 text-xl sm:text-4xl"
-  //   } else {
-  //     return ""
-  //   }
-  // }
 
-  const arrayShift = (array) => {
-    array.shift()
-    console.log("shift")
-    return array
-  }
 
-  const datesArr = arrayShift(selectDatesArr)
+  const datesArr = selectDatesArr
 
   const handleChange = (e) => {
     console.log(e.target.value)
     setArrIndex(e.target.value)
+  }
+
+
+  const changeSentence = (currentP, pastP) => {
+    const tmp = currentP - pastP
+
+    if (tmp > 0) {
+      return "の方が" + Math.abs(tmp) + changeCurrencyUnit(codeKey) + "高い"
+    } else if (tmp < 0) {
+      return "の方が" + Math.abs(tmp) + changeCurrencyUnit(codeKey) + "安い"
+    } else if (tmp === 0) {
+      return "と同額"
+    }
   }
 
   return (
@@ -49,24 +46,23 @@ const ConversionPastRate = ({currentPrice, selectDatesArr, selectRatesArr}) => {
         my-4
       ">
         {
-          // 選択するたびに配列が消えていく現象を治す
           datesArr.map((value, index) => (
+            // 先頭の値を表示させないようにしたかったけどif文要らなかった
+            index !== 0 &&
             <option key={index} value={index}>{value}</option>
           ))
         }
 
       </select>
       での値段は
-      <span
-      // className="
-      //   changed-price-beta
-      //   text-xl
-      //   sm:text-4xl
-      // "
-      // className={toggleClass(todayPrice, price)}
-      >
-        工事中
+      <span>
+        {selectRatesArr[arrIndex] * currentPrice} {changeCurrencyUnit(codeKey)}
       </span>
+      <p className='
+        text-base
+      '>
+        現在の値段 {changeSentence(convertPrice, selectRatesArr[arrIndex] * currentPrice)}
+      </p>
       </div>
     </>
   )

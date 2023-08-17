@@ -87,9 +87,11 @@ export const ConversionRate = ({tRate, codeKey, datesArr, ratesArr}) => {
 					{/* ↓のコンポーネントに換算した値を渡す */}
 					{/* 昨日とか過去のレートは渡さない */}
 					<ConversionPastRate
-					 currentPrice={price * todayRate}
+					 currentPrice={price}
+					 convertPrice={price * todayRate}
 					 selectDatesArr={datesArr}
 					 selectRatesArr={ratesArr}
+					 codeKey={codeKey}
 					/>
 
 				</div>
