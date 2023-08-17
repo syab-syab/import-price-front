@@ -6,12 +6,12 @@ const changeHowToSayJapanese = (code) => {
 			return "ユーロ"
 		case "GBP":
 			return "英ポンド"
+		case "TWD":
+			return "台ドル"
 		case "CHF":
 			return "瑞フラン"
 		case "AUD":
 			return "豪ドル"
-		case "NZD":
-			return "乳ドル"
 		case "NOK":
 			return "諾クローネ"
 		case "CAD":

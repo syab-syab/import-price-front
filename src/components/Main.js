@@ -99,7 +99,7 @@ export const Main = () => {
 
   // 選択されたコードのレートを配列に直す
   // 配列の一番初めのレートを現在のレートとして切り出すこと(要parseFloat())
-  const today_rate_crCode = crCode_data.rate_val.split(",")
+  const rates_crCode = crCode_data.rate_val.split(",")
 
   // 選択されたコードのレートに対応した日付の配列
   // 一番初めの文字列がレートの配列の最初の値に対応する感じで後に続く値も同じように扱う(型変換不要)
@@ -111,12 +111,19 @@ export const Main = () => {
   // 通貨コードを選択するたびにcrCodeを変えて
   // localStrageの値も変える
   const handleChange = (e) => {
-    console.log("handleChange start")
     localStorage.setItem(codeKey, e.target.value)
     // setCrCode(e.target.value[0])
     setCrCode(localStorage.getItem(codeKey))
     console.log(crCode)
-    console.log("handleChange end")
+  }
+
+  // ConversionRateに渡すためにレートの配列をすべてfloatに変える
+  const conversionArrayFloat = (arr) => {
+    let array = []
+    arr.forEach(e => {
+      array.push(parseFloat(e))
+    })
+    return array
   }
 
   return (
@@ -136,15 +143,18 @@ export const Main = () => {
         <ChoiceCode type={crCode} method={handleChange} />
         <CurrentRate
           payCode={crCode}
-          currentRate={parseFloat(today_rate_crCode[0])}
+          currentRate={parseFloat(rates_crCode[0])}
           codeKey={localStorage.getItem(codeKey)}
           lastUpdate={last_update_date_crCode}
           currentRatesDate={date_array_crCode[0]}
         />
         {/* [TODO] ConversionRateに日付とレートの配列を渡す */}
         <ConversionRate
-          tRate={parseFloat(today_rate_crCode[0])}
+          tRate={parseFloat(rates_crCode[0])}
           codeKey={localStorage.getItem(codeKey)}
+          // 先頭の日付は現在のレートの日付だから削除
+          datesArr={date_array_crCode}
+          ratesArr={conversionArrayFloat(rates_crCode)}
         />
       </main>
     </>

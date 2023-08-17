@@ -10,8 +10,8 @@ const changeCurrencyUnit = (code) => {
 			return "SwF"
 		case "AUD":
 			return "A$"
-		case "NZD":
-			return "NZ$"
+		case "TWD":
+			return "NT$"
 		case "NOK":
 			return "NKr"
 		case "CAD":

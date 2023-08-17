@@ -1,10 +1,10 @@
 import React from 'react'
 import { useState } from 'react'
 import changeHowToSayJapanese from '../functions/changeHowToSayJapanese'
-import ConversionRateListItem from './microparts/ConversionRateListItem'
+import ConversionPastRate from './microparts/ConversionPastRate'
 import changeCurrencyUnit from '../functions/changeCurrencyUnit'
 
-export const ConversionRate = ({tRate, codeKey}) => {
+export const ConversionRate = ({tRate, codeKey, datesArr, ratesArr}) => {
 
   const [price, setPrice] = useState(1)
 
@@ -66,28 +66,33 @@ export const ConversionRate = ({tRate, codeKey}) => {
 				px-3
 				sm:px-0
 			">
-				<ul className="
+				<div className="
 					bg-gray-200
 					tracking-widest
 				">
-					<li className="
+					<div className="
 						text-left
 					">
-					この商品は{changeHowToSayJapanese(codeKey)}で
-					<span className="
-						changed-price-beta
-						text-xl
-						sm:text-4xl
-					">
-						{price * todayRate} {changeCurrencyUnit(codeKey)}
-					</span>
-					です！
-					</li>
+						<p>
+							この商品は{changeHowToSayJapanese(codeKey)}で
+							<span className="
+								changed-price-beta
+								text-xl
+								sm:text-4xl
+							">
+								{price * todayRate} {changeCurrencyUnit(codeKey)}
+							</span>
+						</p>
+					</div>
 					{/* ↓のコンポーネントに換算した値を渡す */}
 					{/* 昨日とか過去のレートは渡さない */}
-					<ConversionRateListItem />
+					<ConversionPastRate
+					 currentPrice={price * todayRate}
+					 selectDatesArr={datesArr}
+					 selectRatesArr={ratesArr}
+					/>
 
-				</ul>
+				</div>
 			</div>
 		</div>     
   )
