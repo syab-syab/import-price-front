@@ -1,6 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Modal from "react-modal";
+import About from './About';
+
 
 export const Header = () => {
+  const [aboutIsOpen, setAboutIsOpen] = useState(false)
+  console.log(aboutIsOpen)
+
+  const customStyles = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+      padding: 0,
+    },
+  }
+
+  const toggleModal = () => {
+    setAboutIsOpen(!aboutIsOpen);
+  }
+
+
   return (
     <header className="
       bg-black
@@ -45,9 +68,21 @@ export const Header = () => {
         hover:border-white       
         transition-all
         duration-500
-      ">
+      "
+      onClick={toggleModal}
+      >
         ABOUT
       </span>
+        <Modal
+          isOpen={aboutIsOpen}
+          style={customStyles}
+          onRequestClose={toggleModal}
+          ariaHideApp={false}
+          contentLabel="Example Modal"
+        >
+          <About func={toggleModal} />
+          {/* <button onClick={toggleModal}>閉じる</button> */}
+        </Modal>
       <a className="
         border-b-2
         border-transparent
