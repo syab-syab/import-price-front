@@ -3,22 +3,20 @@
     {"id": 1, "value": "USD", "name": "USD(アメリカ)"},
     {"id": 2, "value": "AUD", "name": "AUD(オーストラリア)"},
     {"id": 3, "value": "CAD", "name": "CAD(カナダ)"},
-    {"id": 4, "value": "THB", "name": "THB(タイ)"},
+    {"id": 4, "value": "TWD", "name": "TWD(台湾)"},
     {"id": 5, "value": "CNY", "name": "CNY(中国)"},
-
+    
     {"id": 6, "value": "EUR", "name": "EUR(ヨーロッパ)"},
     {"id": 7, "value": "GBP", "name": "GBP(イギリス)"},
     {"id": 8, "value": "CHF", "name": "CHF(スイス)"},
-    {"id": 9, "value": "SGD", "name": "SGD(シンガポール)"},
-    {"id": 10, "value": "MYR", "name": "MYR(マレーシア)"},
+    {"id": 9, "value": "THB", "name": "THB(タイ)"},
+    {"id": 10, "value": "SGD", "name": "SGD(シンガポール)"},
 
-    {"id": 11, "value": "INR", "name": "INR(インド)"},
-    {"id": 12, "value": "NOK", "name": "NOK(ノルウェー)"},
-    {"id": 13, "value": "PHP", "name": "PHP(フィリピン)"},
-    {"id": 14, "value": "IDR", "name": "IDR(インドネシア)"},
-    {"id": 15, "value": "HKD", "name": "HKD(香港)"},
-    
-    {"id": 16, "value": "KRW", "name": "KRW(韓国)"}
+    {"id": 11, "value": "MYR", "name": "MYR(マレーシア)"},
+    {"id": 12, "value": "INR", "name": "INR(インド)"},
+    {"id": 13, "value": "NOK", "name": "NOK(ノルウェー)"},
+    {"id": 14, "value": "PHP", "name": "PHP(フィリピン)"},
+    {"id": 15, "value": "KRW", "name": "KRW(韓国)"}
 
   ]
 }
