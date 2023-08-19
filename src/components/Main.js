@@ -8,6 +8,7 @@ import { useState } from 'react'
 // import testRates from '../data/test-data.json'
 // 新テストデータ↓
 import testRates2 from '../data/test-data2.json'
+// import "/node_modules/flag-icons/css/flag-icons.min.css";
 
 export const Main = () => {
 

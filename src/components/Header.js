@@ -5,7 +5,6 @@ import About from './About';
 
 export const Header = () => {
   const [aboutIsOpen, setAboutIsOpen] = useState(false)
-  console.log(aboutIsOpen)
 
   const customStyles = {
     content: {
