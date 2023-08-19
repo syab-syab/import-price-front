@@ -60,6 +60,7 @@ const ConversionPastRate = ({currentPrice, convertPrice, selectDatesArr, selectR
       </span>
       <p className='
         text-base
+        mt-3
       '>
         現在の値段 {changeSentence(convertPrice, selectRatesArr[arrIndex] * currentPrice)}
       </p>

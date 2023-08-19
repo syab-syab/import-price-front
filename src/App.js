@@ -13,7 +13,6 @@ function App() {
       App
       text-center
       
-      
       md:text-xl
     ">
       <Header />
