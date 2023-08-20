@@ -9,6 +9,7 @@ import { useState } from 'react'
 // 新テストデータ↓
 import testRates2 from '../data/test-data2.json'
 // import "/node_modules/flag-icons/css/flag-icons.min.css";
+import RateChart from './RateChart'
 
 export const Main = () => {
 
@@ -156,6 +157,11 @@ export const Main = () => {
           // 先頭の日付は現在のレートの日付だから削除
           datesArr={date_array_crCode}
           ratesArr={conversionArrayFloat(rates_crCode)}
+        />
+        <RateChart
+          payCode={crCode}
+          ratesArr={conversionArrayFloat(rates_crCode)}
+          dateArr={date_array_crCode}
         />
       </main>
     </>
