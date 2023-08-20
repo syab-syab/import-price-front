@@ -21,12 +21,19 @@ const RateChart = ({payCode, ratesArr, dateArr}) => {
 
   return (
     <div className='
-      h-96
+      h-64
+      w-auto
+      px-10
     '>
-      <p>RateChart</p>
       <ResponsiveLine
         data={data}
-        // margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
+        margin={{
+          top: 50,
+          // right: 110,
+          bottom: 50,
+          left: 60
+        }}
+
         xScale={{
           type: 'point',
 
@@ -46,10 +53,11 @@ const RateChart = ({payCode, ratesArr, dateArr}) => {
             tickSize: 5,
             tickPadding: 5,
             tickRotation: 0,
-            legend: 'count',
             legendOffset: -40,
             legendPosition: 'middle'
         }}
+
+        enableGridX={false}
 
         enablePoints={false}
 
@@ -60,7 +68,7 @@ const RateChart = ({payCode, ratesArr, dateArr}) => {
             anchor: 'bottom-right',
             direction: 'column',
             justify: false,
-            translateX: -77,
+            // translateX: -77,
             translateY: 0,
             itemsSpacing: 0,
             itemDirection: 'left-to-right',

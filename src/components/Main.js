@@ -150,6 +150,11 @@ export const Main = () => {
           lastUpdate={last_update_date_crCode}
           currentRatesDate={date_array_crCode[0]}
         />
+        <RateChart
+          payCode={crCode}
+          ratesArr={conversionArrayFloat(rates_crCode)}
+          dateArr={date_array_crCode}
+        />
         {/* [TODO] ConversionRateに日付とレートの配列を渡す */}
         <ConversionRate
           tRate={parseFloat(rates_crCode[0])}
@@ -158,11 +163,11 @@ export const Main = () => {
           datesArr={date_array_crCode}
           ratesArr={conversionArrayFloat(rates_crCode)}
         />
-        <RateChart
+        {/* <RateChart
           payCode={crCode}
           ratesArr={conversionArrayFloat(rates_crCode)}
           dateArr={date_array_crCode}
-        />
+        /> */}
       </main>
     </>
   )

@@ -16,7 +16,7 @@ export const CurrentRate = ({payCode, currentRate, codeKey, lastUpdate, currentR
 		// メイン・現在のレート
 		<div className="
 			rate
-			mb-4
+			
 			py-3
 			shadow-inner
 			text-xl
