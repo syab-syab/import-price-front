@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Modal from "react-modal";
-import About from './About';
+// import About from './About';
+import About from './microparts/About';
 
 
 export const Header = () => {

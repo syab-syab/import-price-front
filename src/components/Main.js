@@ -143,6 +143,7 @@ export const Main = () => {
         sm:py-20
       ">
         <ChoiceCode type={crCode} method={handleChange} />
+
         <CurrentRate
           payCode={crCode}
           currentRate={parseFloat(rates_crCode[0])}
@@ -163,11 +164,7 @@ export const Main = () => {
           datesArr={date_array_crCode}
           ratesArr={conversionArrayFloat(rates_crCode)}
         />
-        {/* <RateChart
-          payCode={crCode}
-          ratesArr={conversionArrayFloat(rates_crCode)}
-          dateArr={date_array_crCode}
-        /> */}
+
       </main>
     </>
   )

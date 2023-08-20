@@ -22,8 +22,9 @@ const RateChart = ({payCode, ratesArr, dateArr}) => {
   return (
     <div className='
       h-64
-      w-auto
-      px-10
+      
+      
+      sm:px-20
     '>
       <ResponsiveLine
         data={data}
