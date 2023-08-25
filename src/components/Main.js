@@ -10,6 +10,7 @@ import { useState } from 'react'
 import testRates2 from '../data/test-data2.json'
 // import "/node_modules/flag-icons/css/flag-icons.min.css";
 import RateChart from './RateChart'
+import createDatetimeArray from '../functions/createDatetimeArray'
 
 export const Main = () => {
 
@@ -56,23 +57,50 @@ export const Main = () => {
 
   // ^^^^^ レートのデータの期限の処理(後々別ファイルに切り出す) ^^^^^^
 
-  // 4時間ごとにレートを取得し直す
-  // 0:00, 4:00, 8:00, 12:00, 16:00, 20:00, 24:00(0:00)
+  // 6時間ごとにレートを取得し直す
+  // 0:00, 6:00, 12:00, 18:00, 20:00, 24:00(0:00)
   // 時間が↑のいずれかに該当するとき"local-rates"の値を削除
 
-  // const timeCheck = () => {
-  //   const limitTime = [0, 4, 8, 12, 16, 20, 24]
-  //   const now = new Date()
+  // 2023 8 25 1700
+  // 2023 8 25 2100
+  // 2023 9 01 0600
+
+  // [20**, **, **, 0, 00]
+  // [20**, **, **, 6, 00]
+  // [20**, **, **, 12, 00]
+  // [20**, **, **, 18, 00]
+  // [20**, **, **, 20, 00]
+
+  // 時、分以外にも
+  // 年、月、日の値が1つでも多ければ更新
+  const timeCheck = () => {
+    const limitHourArr = [0, 6, 12, 18, 20]
+    const tmp = new Date()
+    // const tmp = new Date(2023, 8, 25, 6, 0)
+    const tmpLimitDateTime = createDatetimeArray(tmp)
+    const limitH = limitHourArr.find(e => e >= tmpLimitDateTime[3])
+    // limitHourArrのなかで現在の時より大きいor等しいものがなければfalseになる
+    console.log(tmpLimitDateTime)
+    
+    return limitH
     // \時間だけだとその時間(Hour)以内では何度も更新してしまうので
     // \他にも条件を付ける
     // \例えば年、日付、分
     // \最後に更新した日付と時間をローカルに入れとくといいかもしれない
-    // if (limitTime.includes(now.getHours())) {
+    // if (limitHourArr.includes(tmp.getHours())) {
     //   return true
     // } else {
     //   return false
     // }
-  // }
+  }
+
+  console.log(timeCheck())
+
+  // 最後にアクセスした時の日時をlocalStrageに記録する
+  const lastAccessDateKey = "lastAccessDate"
+  const nowDateTime = new Date()
+  localStorage.setItem(lastAccessDateKey, createDatetimeArray(nowDateTime))
+  console.log(localStorage.getItem(lastAccessDateKey))
 
 
   // vvvvvv レートのデータの期限の処理 vvvvvv
@@ -130,6 +158,8 @@ export const Main = () => {
 
   return (
     <>
+      {/* <p>{process.env.REACT_APP_HELLO_WORLD}</p> */}
+      {/* <a href={process.env.REACT_APP_API_URL}>LINK</a> */}
       <main  className="
         bg-orange-100
         text-yellow-900
@@ -142,6 +172,7 @@ export const Main = () => {
         py-3
         sm:py-20
       ">
+        {/* 本番環境用に data: rates, isLoaded, error の真偽値で表示を変えるように直す　*/}
         <ChoiceCode type={crCode} method={handleChange} />
 
         <CurrentRate
