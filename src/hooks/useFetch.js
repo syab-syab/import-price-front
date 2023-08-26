@@ -19,6 +19,7 @@ const useFetch = (url, key) => {
       setData(JSON.parse(localData))
       setIsLoaded(false)
       setError(null)
+      console.log("通信せず")
     } else {
       // nullの場合
       const abortCont = new AbortController();
@@ -49,7 +50,7 @@ const useFetch = (url, key) => {
             }
           })
         }, 1000);
-
+      console.log("通信完了")
       return () => abortCont.abort();
     }
   }, [url, key])
