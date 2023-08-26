@@ -10,7 +10,8 @@ import { useState } from 'react'
 import testRates2 from '../data/test-data2.json'
 // import "/node_modules/flag-icons/css/flag-icons.min.css";
 import RateChart from './RateChart'
-import createDatetimeArray from '../functions/createDatetimeArray'
+import validTimeCreate from '../functions/validTimeCreate'
+import createCurrentUnixTime from '../functions/createCurrentUnixTime'
 
 export const Main = () => {
 
@@ -57,50 +58,40 @@ export const Main = () => {
 
   // ^^^^^ レートのデータの期限の処理(後々別ファイルに切り出す) ^^^^^^
 
-  // 6時間ごとにレートを取得し直す
-  // 0:00, 6:00, 12:00, 18:00, 20:00, 24:00(0:00)
+  // 一定時間ごとにレートを取得し直す
+  // 6:00, 12:00, 18:00, 20:00
   // 時間が↑のいずれかに該当するとき"local-rates"の値を削除
 
-  // 2023 8 25 1700
-  // 2023 8 25 2100
-  // 2023 9 01 0600
+  // 現在の日時を取得する
+  // 取得した値からhourだけ配列の中のもので一番近いのを代入して
+  // 有効期限としてローカルに保存(無ければその日の23時59分59秒を Date(20**, *, *, 23, 59, 59))
+  // キーは valid period
+  // 次回アクセスした際にその時間を超過していたらデータ更新
+  // もしかしたらunix時間にした方がいいかも
+  // なお初回アクセス時にはローカルに存在しない点に注意
 
-  // [20**, **, **, 0, 00]
-  // [20**, **, **, 6, 00]
-  // [20**, **, **, 12, 00]
-  // [20**, **, **, 18, 00]
-  // [20**, **, **, 20, 00]
+  const validPeriodKey = "valid-period"
+  // ローカルに存在するかどうかのチェック(trueならそのまま値を入れる)
+  const validCheck = localStorage.getItem(validPeriodKey)
 
-  // 時、分以外にも
-  // 年、月、日の値が1つでも多ければ更新
-  const timeCheck = () => {
-    const limitHourArr = [0, 6, 12, 18, 20]
-    const tmp = new Date()
-    // const tmp = new Date(2023, 8, 25, 6, 0)
-    const tmpLimitDateTime = createDatetimeArray(tmp)
-    const limitH = limitHourArr.find(e => e >= tmpLimitDateTime[3])
-    // limitHourArrのなかで現在の時より大きいor等しいものがなければfalseになる
-    console.log(tmpLimitDateTime)
-    
-    return limitH
-    // \時間だけだとその時間(Hour)以内では何度も更新してしまうので
-    // \他にも条件を付ける
-    // \例えば年、日付、分
-    // \最後に更新した日付と時間をローカルに入れとくといいかもしれない
-    // if (limitHourArr.includes(tmp.getHours())) {
-    //   return true
-    // } else {
-    //   return false
-    // }
+  // 有りでも無しでもどっちみちローカルに格納する
+  if (validCheck) {
+    console.log(validPeriodKey + "有り")
+    console.log(validCheck)
+    localStorage.setItem(validPeriodKey, validTimeCreate())
+  } else {
+    console.log(validPeriodKey + "無し")
+    localStorage.setItem(validPeriodKey, validTimeCreate())
   }
 
-  console.log(timeCheck())
 
-  // 最後にアクセスした時の日時をlocalStrageに記録する
-  const lastAccessDateKey = "lastAccessDate"
-  const nowDateTime = new Date()
-  localStorage.setItem(lastAccessDateKey, createDatetimeArray(nowDateTime))
-  console.log(localStorage.getItem(lastAccessDateKey))
+  console.log(parseInt(validCheck))
+  console.log(createCurrentUnixTime())
+  console.log(parseInt(validCheck) > createCurrentUnixTime())
+
+  // parseInt(validCheck) < createCurrentUnixTime()になったら更新
+
+
 
 
   // vvvvvv レートのデータの期限の処理 vvvvvv
