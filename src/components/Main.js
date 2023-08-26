@@ -85,9 +85,9 @@ export const Main = () => {
   }
 
 
-  console.log(parseInt(validCheck))
+  console.log(parseInt(localStorage.getItem(validPeriodKey)))
   console.log(createCurrentUnixTime())
-  console.log(parseInt(validCheck) > createCurrentUnixTime())
+  console.log(parseInt(localStorage.getItem(validPeriodKey)) > createCurrentUnixTime())
 
   // parseInt(validCheck) < createCurrentUnixTime()になったら更新
 

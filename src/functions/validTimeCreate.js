@@ -6,7 +6,8 @@ const validTimeCreate = () => {
     // 更新するHourを配列にしておく
     const limitHourArr = [6, 12, 18, 23]
     // 現在の日時を取得
-    // const tmp = new Date(2023, 8, 26, 23, 0)
+    // 日時を指定するときmonthを-1しないと正確な日時は取得できないことに注意
+    // const tmp = new Date(2023, 7, 25, 23, 0)
     const tmp = new Date()
     // 取得した日時を配列にする[年, 月, 日, 時, 分, (場合によっては秒)]
     const tmpLimitDateTime = createDatetimeArray(tmp)
