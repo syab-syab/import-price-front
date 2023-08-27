@@ -8,8 +8,6 @@ import { useState } from 'react'
 // テストデータ↓
 import testRates2 from '../data/test-data2.json'
 import RateChart from './RateChart'
-import validTimeCreate from '../functions/validTimeCreate'
-import createCurrentUnixTime from '../functions/createCurrentUnixTime'
 
 export const Main = () => {
 
@@ -36,53 +34,20 @@ export const Main = () => {
 
   // -------------------------- レート -------------------------------------------------------
 
+
   // REST API から取ってきたデータを
   // ローカルストレージに格納する用のkey
-  // const rateKey = "local-rates"
-  const { data: rates, isLoaded, error } = useFetch(process.env.REACT_APP_API_URL, "usefetch-test");
-  console.log(error)
-  console.log(isLoaded)
-  console.log(rates)
-
-  // **** まだAPIの準備ができていないのでtest-data.jsonかデータ持ってくる  *****
-
   const rateKey = "local-rates"
   // console.log(rateKey)
 
   // データを格納する用の変数
   let localRateData = ""
 
-  // ローカルストレージにデータがあるかどうか
-  // あるならその値を格納され、無いならnullが入る
-  // 真偽値のチェックにも使える
-  // let localRateDataCheck = localStorage.getItem(rateKey)
 
-  // ^^^^^ レートのデータの期限の処理(後々別ファイルに切り出す) ^^^^^^
-
-  // 一定時間ごとにレートを取得し直す
-  // 6:00, 12:00, 18:00, 20:00
-  // 時間が↑のいずれかに該当するとき"local-rates"の値を更新
-
-  // 現在の日時を取得する
-  // 取得した値からhourだけ配列の中のもので一番近いのを代入して
-  // 有効期限としてローカルに保存(無ければその日の23時59分59秒を Date(20**, *, *, 23, 59, 59))
-  // キーは valid period
-  // 次回アクセスした際にその時間を超過していたらデータ更新
-  // もしかしたらunix時間にした方がいいかも
-  // なお初回アクセス時にはローカルに存在しない点に注意
-
+  // 有効期限を格納用のキー
   const validPeriodKey = "valid-period"
+  // なお初回アクセス時にはローカルに有効期限は存在しない点に注意
   // ローカルに存在するかどうかのチェック
-  // let validCheck = localStorage.getItem(validPeriodKey)
-
-
-  // ログ
-  // console.log(parseInt(localStorage.getItem(validPeriodKey)))
-  // console.log(createCurrentUnixTime())
-  // console.log(parseInt(localStorage.getItem(validPeriodKey)) > createCurrentUnixTime())
-
-
-  // vvvvvv レートのデータの期限の処理 vvvvvv
 
   // ^^^^^^ ここからデータ更新の処理 ^^^^^^^^^
 
@@ -104,37 +69,36 @@ export const Main = () => {
   //       有効期限そのまま維持(更新する手もある)
   //     }
 
-  // ↓のif文を全部useFetchに移植した方が良いかも
-  if (
-    !(localStorage.getItem(rateKey)) || 
-    !(localStorage.getItem(validPeriodKey)) || 
-    !(parseInt(localStorage.getItem(validPeriodKey)) > createCurrentUnixTime())
-  ) {
-    console.log("通信してレートの値(local-rates)を更新(初期化)")
-    const new_test_data = testRates2["test-rates"]
-    localStorage.setItem(rateKey, JSON.stringify(new_test_data))
-    console.log("有効期限の値(valid-period)を更新(初期化)")
-    localStorage.setItem(validPeriodKey, validTimeCreate())
-  } else {
-    console.log("通信せずレートの値そのまま維持")
-    console.log("有効期限そのまま維持(更新する手もある)")
-  }
 
   // 新テストデータ
   // カンマ(,)で区切られたレートと日付を配列に直す
-  // const new_test_data = testRates2["test-rates"]
+  const new_test_data = testRates2["test-rates"]
 
-  // localStorage.setItem(rateKey, JSON.stringify(new_test_data))
+  localStorage.setItem(rateKey, JSON.stringify(new_test_data))
 
   // vvvvvvvvv ここ以降はデータの加工だから更新には関わらない vvvvvvvvvvvv
 
-  // 選択された通貨コードから通貨レートを取得し配列に直す
-  localRateData = JSON.parse(localStorage.getItem(rateKey))
 
+
+  console.log("usefetch直前")
+  // const { data: rates, isLoaded, error } = useFetch(process.env.REACT_APP_API_URL, rateKey, validPeriodKey);
+  const { data: rates, isLoaded, error } = useFetch(process.env.REACT_APP_API_URL, "use-fetch-test", validPeriodKey);
+  console.log(error)
+  console.log(isLoaded)
+  console.log(rates)
+
+  // 選択された通貨コードから通貨レートを取得し配列に直す
+  // localStorage.setItem(rateKey, JSON.stringify(rates))
+  localRateData = JSON.parse(localStorage.getItem(rateKey))
+  // localRateData = JSON.parse(rates)
+
+  console.log("localRateData vvv")
+  console.log(localRateData)
   // 通信テスト
   // localRateData = JSON.parse(localStorage.getItem("usefetch-test"))
 
   const crCode_data = localRateData.filter(e => e.payment_code === crCode)[0]
+  
 
   // 選択されたコードのレートを配列に直す
   // 配列の一番初めのレートを現在のレートとして切り出すこと(要parseFloat())

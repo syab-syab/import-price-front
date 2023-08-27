@@ -1,23 +1,26 @@
 import { useState, useEffect } from 'react';
+import createCurrentUnixTime from '../functions/createCurrentUnixTime';
+import validTimeCreate from '../functions/validTimeCreate';
 
 // 引数keyに格納されたキーを使ってLocalStrageへ格納
 // 引数をもう2つ増やす
-const useFetch = (url, rateCheck) => {
+const useFetch = (url, rateCheck, validPeriodCheck) => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(true);
-
-  console.log(url)
-
 
   useEffect(() => {
     // 条件分岐
     // ローカルストレージに指定されたキーの値があるかどうか
     const localRates = localStorage.getItem(rateCheck) // レートの値
+    console.log("usefetchのlocalrates vvv")
+    console.log(localRates)
     // 有効期限
+    const validPeriod = localStorage.getItem(validPeriodCheck)
     // 有効期限を超過していないかどうか
+    const overdueCheck = parseInt(localStorage.getItem(validPeriodCheck)) > createCurrentUnixTime()
 
-    if (localRates) {
+    if (localRates && validPeriod && overdueCheck) {
       // trueの場合
       // ローカルストレージにあるデータは文字列化しているから
       // JSON.parseで配列(オブジェクトに戻す)
@@ -43,7 +46,10 @@ const useFetch = (url, rateCheck) => {
             // ここに格納の処理
             // ローカルストレージに格納する場合は
             // 文字列に直さないとおかしくなる(取り出した時に戻せばいい)
+            // 通信してレートの値(local-rates)を更新(初期化)
             localStorage.setItem(rateCheck, JSON.stringify(data))
+            // 有効期限の値(valid-period)を更新(初期化)
+            localStorage.setItem(validPeriodCheck, validTimeCreate())
             setError(null)
           })
           .catch(err => {
@@ -58,7 +64,7 @@ const useFetch = (url, rateCheck) => {
       console.log("通信完了")
       return () => abortCont.abort();
     }
-  }, [url, rateCheck])
+  }, [url, rateCheck, validPeriodCheck])
 
   return { data, isLoaded, error };
 }

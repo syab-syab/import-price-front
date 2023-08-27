@@ -18,6 +18,7 @@ const validTimeCreate = () => {
       tmpLimitDateTime[4] = 0
     } else {
       // もし23なら配列の分と秒に59を代入
+      // 有効期限としてローカルに保存するため(無ければその日の23時59分59秒を Date(20**, *, *, 23, 59, 59))
       tmpLimitDateTime[3] = limitHourArr[3]
       tmpLimitDateTime[4] = 59
       tmpLimitDateTime[5] = 59
