@@ -7,6 +7,8 @@ const useFetch = (url, rateCheck) => {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(true);
 
+  console.log(url)
+
 
   useEffect(() => {
     // 条件分岐
