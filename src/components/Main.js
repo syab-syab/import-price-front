@@ -51,65 +51,36 @@ export const Main = () => {
 
   // ^^^^^^ ここからデータ更新の処理 ^^^^^^^^^
 
-  // [重要]レートの値を更新するタイミングについて
-  //     ┃
-  //     ┣━ 1. ローカルストレージにレートのデータ(local-rates)が存在しない時(更新というより格納)
-  //     ┃
-  //     ┣━ 2. ローカルストレージに有効期限(valid-period)が存在しない時
-  //     ┃
-  //     ┣━ 3. ローカルストレージに存在する有効期限(valid-period)がアクセス時の日時を超過している時
-  //     ┃
-  //     ┗━ 以上3つのうちいずれかの一つでも条件を満たした時にAPIと通信してローカルの値を更新する
-
-  //     if (1 || 2 || 3) {
-  //       通信してレートの値(local-rates)を更新(初期化)
-  //       有効期限の値(valid-period)を更新(初期化)
-  //     } else {
-  //       通信せずレートの値そのまま維持
-  //       有効期限そのまま維持(更新する手もある)
-  //     }
-
-
-  // 新テストデータ
-  // カンマ(,)で区切られたレートと日付を配列に直す
+  // ダミーデータ
   const new_test_data = testRates2["test-rates"]
 
-  localStorage.setItem(rateKey, JSON.stringify(new_test_data))
+  localStorage.setItem("dummy-rates-data", JSON.stringify(new_test_data))
 
-  // vvvvvvvvv ここ以降はデータの加工だから更新には関わらない vvvvvvvvvvvv
+  // useFetchの処理は2度行われる点に注意(isLoadedは最初はtrueでdataを取得したのちfalseになるから)
+  const { data: rates, isLoaded, error } = useFetch(process.env.REACT_APP_API_URL, rateKey, validPeriodKey);
+  // 下の三つのログがuseFetchより先に返される
 
-
-
-  console.log("usefetch直前")
-  // const { data: rates, isLoaded, error } = useFetch(process.env.REACT_APP_API_URL, rateKey, validPeriodKey);
-  const { data: rates, isLoaded, error } = useFetch(process.env.REACT_APP_API_URL, "use-fetch-test", validPeriodKey);
-  console.log(error)
-  console.log(isLoaded)
-  console.log(rates)
+  // [重要]isLoadedがfalseになった時点でやればエラーは出ない
+  // ダミーを先に入れればエラーが出ない
 
   // 選択された通貨コードから通貨レートを取得し配列に直す
-  // localStorage.setItem(rateKey, JSON.stringify(rates))
   localRateData = JSON.parse(localStorage.getItem(rateKey))
-  // localRateData = JSON.parse(rates)
+  // ダミーデータを先に入れればエラーが起きない
+  let localDummyData = JSON.parse(localStorage.getItem("dummy-rates-data"))
 
-  console.log("localRateData vvv")
-  console.log(localRateData)
-  // 通信テスト
-  // localRateData = JSON.parse(localStorage.getItem("usefetch-test"))
-
-  const crCode_data = localRateData.filter(e => e.payment_code === crCode)[0]
-  
+  // isLoadedの値がfalseになるまでダミーデータを入れておけばエラーは起きない
+  let crCode_data = (!(isLoaded)) ? localRateData.filter(e => e.payment_code === crCode)[0] : localDummyData.filter(e => e.payment_code === crCode)[0]
 
   // 選択されたコードのレートを配列に直す
   // 配列の一番初めのレートを現在のレートとして切り出すこと(要parseFloat())
-  const rates_crCode = crCode_data.rate_val.split(",")
+  let rates_crCode = crCode_data.rate_val.split(",")
 
   // 選択されたコードのレートに対応した日付の配列
   // 一番初めの文字列がレートの配列の最初の値に対応する感じで後に続く値も同じように扱う(型変換不要)
-  const date_array_crCode = crCode_data.rate_dates.split(",")
+  let date_array_crCode = crCode_data.rate_dates.split(",")
 
   // 選択されたコードのレートの更新日
-  const last_update_date_crCode = crCode_data.updated
+  let last_update_date_crCode = crCode_data.updated
 
   // 通貨コードを選択するたびにcrCodeを変えて
   // localStrageの値も変える

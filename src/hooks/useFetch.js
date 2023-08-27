@@ -13,8 +13,6 @@ const useFetch = (url, rateCheck, validPeriodCheck) => {
     // 条件分岐
     // ローカルストレージに指定されたキーの値があるかどうか
     const localRates = localStorage.getItem(rateCheck) // レートの値
-    console.log("usefetchのlocalrates vvv")
-    console.log(localRates)
     // 有効期限
     const validPeriod = localStorage.getItem(validPeriodCheck)
     // 有効期限を超過していないかどうか
@@ -27,7 +25,6 @@ const useFetch = (url, rateCheck, validPeriodCheck) => {
       setData(JSON.parse(localRates))
       setIsLoaded(false)
       setError(null)
-      console.log("通信せず")
     } else {
       // nullの場合
       const abortCont = new AbortController();
@@ -61,7 +58,6 @@ const useFetch = (url, rateCheck, validPeriodCheck) => {
             }
           })
         }, 1000);
-      console.log("通信完了")
       return () => abortCont.abort();
     }
   }, [url, rateCheck, validPeriodCheck])
