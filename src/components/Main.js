@@ -182,29 +182,30 @@ export const Main = () => {
         sm:py-20
       ">
         {/* 本番環境用に data: rates, isLoaded, error の真偽値で表示を変えるように直す　*/}
-        <ChoiceCode type={crCode} method={handleChange} />
-
-        <CurrentRate
+        { error && <div>エラー</div> }
+        { isLoaded && <div>Now Loading...</div>}
+        
+        { rates && <ChoiceCode type={crCode} method={handleChange} />}
+        { rates && <CurrentRate
           payCode={crCode}
           currentRate={parseFloat(rates_crCode[0])}
           codeKey={localStorage.getItem(codeKey)}
           lastUpdate={last_update_date_crCode}
           currentRatesDate={date_array_crCode[0]}
-        />
-        <RateChart
+        /> }
+        {rates && <RateChart
           payCode={crCode}
           ratesArr={conversionArrayFloat(rates_crCode)}
           dateArr={date_array_crCode}
-        />
+        /> }
         {/* [TODO] ConversionRateに日付とレートの配列を渡す */}
-        <ConversionRate
+        {rates && <ConversionRate
           tRate={parseFloat(rates_crCode[0])}
           codeKey={localStorage.getItem(codeKey)}
           // 先頭の日付は現在のレートの日付だから削除
           datesArr={date_array_crCode}
           ratesArr={conversionArrayFloat(rates_crCode)}
-        />
-
+        />}
       </main>
     </>
   )

@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 
 // 引数keyに格納されたキーを使ってLocalStrageへ格納
-const useFetch = (url, key) => {
+// 引数をもう2つ増やす
+const useFetch = (url, rateCheck) => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(true);
@@ -10,13 +11,15 @@ const useFetch = (url, key) => {
   useEffect(() => {
     // 条件分岐
     // ローカルストレージに指定されたキーの値があるかどうか
-    const localData = localStorage.getItem(key)
+    const localRates = localStorage.getItem(rateCheck) // レートの値
+    // 有効期限
+    // 有効期限を超過していないかどうか
 
-    if (localData) {
+    if (localRates) {
       // trueの場合
       // ローカルストレージにあるデータは文字列化しているから
       // JSON.parseで配列(オブジェクトに戻す)
-      setData(JSON.parse(localData))
+      setData(JSON.parse(localRates))
       setIsLoaded(false)
       setError(null)
       console.log("通信せず")
@@ -38,7 +41,7 @@ const useFetch = (url, key) => {
             // ここに格納の処理
             // ローカルストレージに格納する場合は
             // 文字列に直さないとおかしくなる(取り出した時に戻せばいい)
-            localStorage.setItem(key, JSON.stringify(data))
+            localStorage.setItem(rateCheck, JSON.stringify(data))
             setError(null)
           })
           .catch(err => {
@@ -53,7 +56,7 @@ const useFetch = (url, key) => {
       console.log("通信完了")
       return () => abortCont.abort();
     }
-  }, [url, key])
+  }, [url, rateCheck])
 
   return { data, isLoaded, error };
 }
