@@ -3,6 +3,7 @@ import React from 'react'
 const About = ({func}) => {
   return (
     <div className='
+    m-4
       bg-black
       bg-opacity-50
       text-center
@@ -18,11 +19,11 @@ const About = ({func}) => {
         px-16
         text-left
         leading-10
-        text-2xl
+        sm:text-2xl
       '>
-        <p>このサイトは終値を用いて計算しています。</p>
-        <p>レートの値は正確性を保証できませんのでご理解ください。</p>
-        <p>なお、レートの値はすべてALPHA VANTAGEのものを使用しております。</p>
+        <p>このサイトは四本値のうち終値を用いて計算しています。</p>
+        <p>外国からの輸入品を円から換算した額を示すのが当サイト趣旨です。</p>
+        <p>おそらくfxやレートの分析には向いていないのでご理解ください。</p>
         <div  className='
           text-center
           mt-3

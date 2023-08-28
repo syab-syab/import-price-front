@@ -23,17 +23,15 @@ const ConversionPastRate = ({currentPrice, convertPrice, selectDatesArr, selectR
 
     if (tmp > 0) {
       // comparePricesClass = "text-green-400"
-      // return "の方が" + Math.abs(tmp) + changeCurrencyUnit(codeKey) + "高い"
-      return <span>の方が<span className='text-red-400'>{Math.abs(tmp)}{changeCurrencyUnit(codeKey)}高い</span></span>
+      return <p className='text-green-400'>+{tmp}{changeCurrencyUnit(codeKey)}</p>
     } else if (tmp < 0) {
       // comparePricesClass = "text-blue-500"
-      // return "の方が" + Math.abs(tmp) + changeCurrencyUnit(codeKey) + "安い"
-      return <span>の方が<span className='text-green-400'>{Math.abs(tmp)}{changeCurrencyUnit(codeKey)}安い</span></span>
+      return <p className='text-red-400'>{tmp}{changeCurrencyUnit(codeKey)}</p>
 
     } else if (tmp === 0) {
       // comparePricesClass = "text-red-500"
       // return "と同額"
-      return <span className='text-blue-400'>と同額</span>
+      return <p className='text-blue-400 text-4xl'>±0</p>
     }
   }
 
@@ -66,11 +64,9 @@ const ConversionPastRate = ({currentPrice, convertPrice, selectDatesArr, selectR
         {selectRatesArr[arrIndex] * currentPrice} {changeCurrencyUnit(codeKey)}
       </span>
       <p className='
-        md:text-xl
-        text-base
-        mt-3
+        text-center
       '>
-        現在の値段 {changeSentence(convertPrice, selectRatesArr[arrIndex] * currentPrice)}
+        {changeSentence(convertPrice, selectRatesArr[arrIndex] * currentPrice)}
       </p>
       </div>
     </>
