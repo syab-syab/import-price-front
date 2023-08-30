@@ -3,7 +3,7 @@ import React from 'react'
 const About = ({func}) => {
   return (
     <div className='
-    m-4
+      m-4
       bg-black
       bg-opacity-50
       text-center
@@ -23,7 +23,8 @@ const About = ({func}) => {
       '>
         <p>このサイトは四本値のうち終値を用いて計算しています。</p>
         <p>外国からの輸入品を円から換算した額を示すのが当サイト趣旨です。</p>
-        <p>おそらくfxやレートの分析には向いていないのでご理解ください。</p>
+        <p>Y(円)$(ドル)と銘打っていますがドル以外の外貨での換算もできます。</p>
+        <p>fxやレートの分析には不向きだと思われます。</p>
         <div  className='
           text-center
           mt-3

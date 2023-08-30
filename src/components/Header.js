@@ -90,10 +90,10 @@ export const Header = () => {
         transition-all
         duration-500
       "
-      href='https://twitter.com/nomeatnolifeno1'
-      target='blank'
+        href='https://twitter.com/nomeatnolifeno1'
+        target='blank'
       >
-        TWITTER
+        X(TWITTER)
       </a>
       <a className="
         border-b-2

@@ -41,33 +41,33 @@ const ConversionPastRate = ({currentPrice, convertPrice, selectDatesArr, selectR
         text-left
       ">
         <select
-        name="code"
-        id="code-select"
-        value={arrIndex}
-        onChange={handleChange}
-        className="
-        border
-        border-black
-        my-4
-      ">
-        {
-          datesArr.map((value, index) => (
-            // 先頭の値を表示させないようにしたかったけどif文要らなかった
-            index !== 0 &&
-            <option key={index} value={index}>{value}</option>
-          ))
-        }
+          name="code"
+          id="date-select"
+          value={arrIndex}
+          onChange={handleChange}
+          className="
+          border
+          border-black
+          my-4
+        ">
+          {
+            datesArr.map((value, index) => (
+              // 先頭の値を表示させないようにしたかったけどif文要らなかった
+              index !== 0 &&
+              <option key={index} value={index}>{value}</option>
+            ))
+          }
 
-      </select>
-      での値段は
-      <span>
-        {selectRatesArr[arrIndex] * currentPrice} {changeCurrencyUnit(codeKey)}
-      </span>
-      <p className='
-        text-center
-      '>
-        {changeSentence(convertPrice, selectRatesArr[arrIndex] * currentPrice)}
-      </p>
+        </select>
+        での値段は
+        <span>
+          {selectRatesArr[arrIndex] * currentPrice} {changeCurrencyUnit(codeKey)}
+        </span>
+        <p className='
+          text-center
+        '>
+          {changeSentence(convertPrice, selectRatesArr[arrIndex] * currentPrice)}
+        </p>
       </div>
     </>
   )
