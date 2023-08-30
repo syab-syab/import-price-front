@@ -51,7 +51,7 @@ export const Header = () => {
         text-xl
         sm:text-3xl
       ">
-        輸入品の価格を円換算
+        輸入品の価格を円→外貨で換算
       </h3>
     </div>
     {/* ヘッダー・メニュー */}
