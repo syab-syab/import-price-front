@@ -9,7 +9,7 @@ const RateChart = ({payCode, ratesArr, dateArr}) => {
     for(let i = 0, j = arrX.length - 1; i < arrX.length; i++, j--) {
       tmp.push({id: i, x: arrX[j], y: arrY[j]})
     }
-    console.log(tmp)
+    // console.log(tmp)
     return tmp
   }
   // returnData(dateArr, ratesArr)
