@@ -88,7 +88,7 @@ export const Main = () => {
     localStorage.setItem(codeKey, e.target.value)
     // setCrCode(e.target.value[0])
     setCrCode(localStorage.getItem(codeKey))
-    console.log(crCode)
+    // console.log(crCode)
   }
 
   // ConversionRateに渡すためにレートの配列をすべてfloatに変える

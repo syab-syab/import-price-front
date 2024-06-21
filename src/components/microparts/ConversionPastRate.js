@@ -11,7 +11,7 @@ const ConversionPastRate = ({currentPrice, convertPrice, selectDatesArr, selectR
   const datesArr = selectDatesArr
 
   const handleChange = (e) => {
-    console.log(e.target.value)
+    // console.log(e.target.value)
     setArrIndex(e.target.value)
   }
 
